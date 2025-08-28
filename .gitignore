@@ -136,3 +136,5 @@ examples/sample-react/build
 *.sln
 *.sw?
 .env
+
+.pypirc
