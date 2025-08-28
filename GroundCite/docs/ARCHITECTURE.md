@@ -383,9 +383,7 @@ async def generate_content(
 ### Performance Optimization
 
 1. **Token Usage Tracking**: Monitor and optimize AI service costs
-2. **Caching Strategies**: Results caching at multiple levels
-3. **Batching**: Group similar operations for efficiency
-4. **Retry Logic**: Intelligent backoff and retry strategies
+2. **Retry Logic**: Intelligent backoff and retry strategies
 
 ### Resource Management
 

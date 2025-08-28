@@ -231,8 +231,6 @@ Basic health check and API information.
   "top_p": 0.9,               // Nucleus sampling
   "top_k": 40,                // Top-k sampling
   "max_output_tokens": 2048,   // Maximum response length
-  "candidate_count": 1,        // Number of candidates
-  "stop_sequences": []         // Stop generation sequences
 }
 ```
 
@@ -244,7 +242,6 @@ Basic health check and API information.
   "top_p": 1.0,               // Nucleus sampling
   "frequency_penalty": 0.0,    // Frequency penalty (0-2)
   "presence_penalty": 0.0,     // Presence penalty (0-2)
-  "stop": []                   // Stop sequences
 }
 ```
 

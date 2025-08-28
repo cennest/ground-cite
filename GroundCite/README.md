@@ -196,7 +196,6 @@ GroundCite uses a sophisticated graph-based architecture that orchestrates multi
 #### 5. **Configuration System**
 - **AppSettings**: Centralized configuration management
 - **Validation**: Configuration validation and error reporting
-- **Dependency Injection**: Modular component architecture
 
 ## 📊 Data Flow
 
@@ -388,29 +387,6 @@ print(f"Results: {result['data']['final_content']}")
 
 ## ⚙️ Configuration
 
-### Environment Variables
-```bash
-# AI Provider Keys
-GEMINI_AI_KEY_PRIMARY=your_gemini_key
-GEMINI_AI_KEY_SECONDARY=your_backup_gemini_key
-OPENAI_API_KEY=your_openai_key
-
-# Analysis Settings
-ANALYSIS_VALIDATE=true
-ANALYSIS_PARSE=true
-ANALYSIS_PARSE_SCHEMA='{"type": "object", "properties": {...}}'
-
-# Site Filtering
-ANALYSIS_INCLUDED_SITES=site1.com,site2.com
-ANALYSIS_EXCLUDED_SITES=spam1.com,spam2.com
-
-# Model Configuration
-AI_SEARCH_MODEL_NAME=gemini-2.5-flash
-AI_VALIDATE_MODEL_NAME=gemini-2.5-flash
-AI_PARSE_MODEL_NAME=gemini-2.5-flash
-AI_PARSING_PROVIDER=gemini
-```
-
 ### Configuration File (Python)
 ```python
 from gemini_groundcite.config.settings import AppSettings
@@ -482,33 +458,6 @@ settings.ANALYSIS_CONFIG.included_sites = "nature.com,science.org,arxiv.org"
 settings.ANALYSIS_CONFIG.excluded_sites = "example-spam.com,unreliable.net"
 ```
 
-### Batch Processing
-```python
-import asyncio
-from gemini_groundcite.core.agents import AIAgent
-
-async def analyze_multiple_queries(queries):
-    settings = AppSettings()
-    # Configure settings...
-    
-    agent = AIAgent(settings=settings)
-    
-    results = []
-    for query in queries:
-        result = await agent.analyze_query(query=query)
-        results.append(result)
-    
-    return results
-
-# Run batch analysis
-queries = [
-    "What is machine learning?",
-    "How does blockchain work?",
-    "What are the benefits of solar energy?"
-]
-results = asyncio.run(analyze_multiple_queries(queries))
-```
-
 ## 📈 Monitoring and Logging
 
 ### Token Usage Tracking
@@ -547,66 +496,6 @@ logger.log_info(
         "duration": 1.23
     }
 )
-```
-
-## 🧪 Testing
-
-### Running Tests
-```bash
-# Install development dependencies
-pip install -e ".[dev]"
-
-# Run all tests
-pytest
-
-# Run with coverage
-pytest --cov=gemini_groundcite --cov-report=html
-
-# Run specific test file
-pytest tests/test_ai_agent.py -v
-```
-
-### Example Test
-```python
-import pytest
-from gemini_groundcite.config.settings import AppSettings
-from gemini_groundcite.core.agents import AIAgent
-
-@pytest.mark.asyncio
-async def test_basic_analysis():
-    settings = AppSettings()
-    settings.ANALYSIS_CONFIG.query = "Test query"
-    settings.AI_CONFIG.gemini_ai_key_primary = "test_key"
-    
-    agent = AIAgent(settings=settings)
-    
-    # Mock the actual AI calls for testing
-    # ... test implementation
-```
-
-## 🚀 Deployment
-
-### Docker Deployment
-```dockerfile
-# Dockerfile
-FROM python:3.11-slim
-
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY . .
-RUN pip install -e .
-
-# API server
-EXPOSE 8000
-CMD ["python", "-m", "gemini_groundcite.main"]
-```
-
-```bash
-# Build and run
-docker build -t groundcite .
-docker run -p 8000:8000 -e GEMINI_AI_KEY_PRIMARY=your_key groundcite
 ```
 
 ### Production Considerations

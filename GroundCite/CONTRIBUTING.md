@@ -10,7 +10,6 @@ We welcome contributions to GroundCite! This document provides guidelines for co
 - [Pull Request Process](#pull-request-process)
 - [Issue Reporting](#issue-reporting)
 - [Development Workflow](#development-workflow)
-- [Testing Guidelines](#testing-guidelines)
 - [Documentation](#documentation)
 
 ## Code of Conduct
@@ -62,7 +61,6 @@ We are committed to providing a welcoming and inspiring community for all. Pleas
 
 5. **Verify installation**
    ```bash
-   pytest tests/
    gemini-groundcite --help
    ```
 
@@ -82,31 +80,6 @@ ENVIRONMENT=development
 LOG_LEVEL=DEBUG
 ```
 
-### IDE Configuration
-
-#### VS Code
-Recommended extensions:
-- Python
-- Python Docstring Generator
-- autoDocstring
-- GitLens
-- Python Test Explorer
-
-Settings:
-```json
-{
-  "python.formatting.provider": "black",
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.testing.pytestEnabled": true
-}
-```
-
-#### PyCharm
-- Enable black formatting
-- Configure pytest as the test runner
-- Set up virtual environment interpreter
-
 ## Contribution Guidelines
 
 ### Types of Contributions
@@ -117,8 +90,7 @@ We welcome several types of contributions:
 2. **Feature Requests** - Suggest new functionality
 3. **Code Contributions** - Implement features or fix bugs
 4. **Documentation** - Improve or add documentation
-5. **Tests** - Add or improve test coverage
-6. **Performance Improvements** - Optimize existing code
+5. **Performance Improvements** - Optimize existing code
 
 ### What We're Looking For
 
@@ -127,7 +99,6 @@ We welcome several types of contributions:
 - **Performance Optimizations** - Speed and efficiency improvements
 - **UI/UX Enhancements** - Better CLI and API interfaces
 - **Documentation Improvements** - Clearer guides and examples
-- **Test Coverage** - More comprehensive testing
 
 ## Pull Request Process
 
@@ -148,34 +119,9 @@ We welcome several types of contributions:
 
 2. **Make your changes**
    - Follow the coding standards
-   - Add tests for new functionality
    - Update documentation as needed
 
-3. **Test your changes**
-   ```bash
-   # Run all tests
-   pytest
-
-   # Run with coverage
-   pytest --cov=gemini_groundcite --cov-report=html
-
-   # Test specific modules
-   pytest tests/test_ai_agent.py -v
-   ```
-
-4. **Format and lint**
-   ```bash
-   # Format code
-   black gemini_groundcite/ tests/
-
-   # Check linting
-   flake8 gemini_groundcite/ tests/
-
-   # Type checking (if using mypy)
-   mypy gemini_groundcite/
-   ```
-
-5. **Commit your changes**
+3. **Commit your changes**
    ```bash
    git add .
    git commit -m "feat: add support for new AI provider"
@@ -184,13 +130,12 @@ We welcome several types of contributions:
    # feat: new feature
    # fix: bug fix
    # docs: documentation
-   # test: testing
    # refactor: code refactoring
    # style: formatting
    # chore: maintenance
    ```
 
-6. **Push and create PR**
+4. **Push and create PR**
    ```bash
    git push origin feature/your-feature-name
    # Create pull request on GitHub
@@ -199,8 +144,6 @@ We welcome several types of contributions:
 ### Pull Request Requirements
 
 - [ ] **Clear description** - Explain what changes were made and why
-- [ ] **Tests pass** - All existing tests continue to pass
-- [ ] **New tests** - Add tests for new functionality
 - [ ] **Documentation** - Update relevant documentation
 - [ ] **Backwards compatibility** - Avoid breaking existing APIs
 - [ ] **Performance** - No significant performance regressions
@@ -217,16 +160,10 @@ Brief description of changes
 - [ ] Breaking change
 - [ ] Documentation update
 
-## Testing
-- [ ] Unit tests pass
-- [ ] Integration tests pass
-- [ ] Manual testing completed
-
 ## Checklist
 - [ ] Code follows project style guidelines
 - [ ] Self-review completed
 - [ ] Documentation updated
-- [ ] Tests added/updated
 ```
 
 ## Issue Reporting
@@ -305,22 +242,10 @@ gemini_groundcite/
 ├── exceptions.py            # Custom exceptions
 └── ...
 
-tests/
-├── unit/                    # Unit tests
-├── integration/             # Integration tests
-├── fixtures/                # Test fixtures
-└── conftest.py              # Pytest configuration
 ```
 
 ### Coding Standards
 
-#### Python Style
-
-Follow PEP 8 with these additions:
-- Line length: 88 characters (Black default)
-- Use type hints for all public functions
-- Use docstrings for all public classes and functions
-- Prefer async/await for I/O operations
 
 #### Documentation Style
 
@@ -382,14 +307,7 @@ async def analyze_query(
            """Implement the common interface"""
    ```
 
-2. **Register with DI container**
-   ```python
-   # In core_di.py
-   def configure_ai_clients(container):
-       container.register(NewProviderClient, instance=NewProviderClient())
-   ```
-
-3. **Update configuration**
+2. **Update configuration**
    ```python
    # In settings.py
    class AIConfig:
@@ -397,13 +315,6 @@ async def analyze_query(
        new_provider_model_name: str = "default-model"
    ```
 
-4. **Add tests**
-   ```python
-   # tests/unit/test_new_provider_client.py
-   class TestNewProviderClient:
-       async def test_generate_content(self):
-           # Test implementation
-   ```
 
 #### Adding New Processing Nodes
 
@@ -437,99 +348,6 @@ async def analyze_query(
    new_node = create_new_node(self.settings, self.logger)
    workflow.add_node("new_node", new_node)
    ```
-
-## Testing Guidelines
-
-### Test Structure
-
-```python
-import pytest
-from unittest.mock import Mock, AsyncMock
-from gemini_groundcite.core.agents import AIAgent
-
-class TestAIAgent:
-    """Test suite for AIAgent class"""
-    
-    @pytest.fixture
-    def settings(self):
-        """Provide test settings"""
-        # Return configured test settings
-    
-    @pytest.fixture
-    def agent(self, settings):
-        """Provide configured AI agent"""
-        return AIAgent(settings=settings)
-    
-    async def test_analyze_query_success(self, agent):
-        """Test successful query analysis"""
-        # Arrange
-        query = "test query"
-        
-        # Act
-        result = await agent.analyze_query(query)
-        
-        # Assert
-        assert result is not None
-        assert result['completed'] is True
-    
-    async def test_analyze_query_invalid_config(self, agent):
-        """Test analysis with invalid configuration"""
-        # Test error conditions
-        with pytest.raises(ConfigurationError):
-            await agent.analyze_query("")
-```
-
-### Test Categories
-
-1. **Unit Tests** - Test individual functions/methods
-2. **Integration Tests** - Test component interactions
-3. **API Tests** - Test REST API endpoints
-4. **CLI Tests** - Test command-line interface
-5. **Performance Tests** - Test performance characteristics
-
-### Mocking Guidelines
-
-Mock external dependencies:
-- AI provider APIs
-- Web search APIs
-- Network calls
-- File system operations
-
-```python
-@pytest.mark.asyncio
-async def test_with_mocked_ai_client(mocker):
-    """Test with mocked AI client"""
-    mock_client = mocker.patch('gemini_groundcite.core.agents.clients.GoogleGenAIClient')
-    mock_client.generate_content.return_value = AsyncMock(
-        return_value={"content": "test response"}
-    )
-    
-    # Test with mocked client
-```
-
-### Test Data
-
-Use fixtures for test data:
-
-```python
-# tests/fixtures/sample_data.py
-SAMPLE_QUERY = "What is artificial intelligence?"
-
-SAMPLE_SEARCH_RESULTS = [
-    {
-        "title": "AI Overview",
-        "url": "https://example.com/ai",
-        "content": "AI is..."
-    }
-]
-
-SAMPLE_SCHEMA = {
-    "type": "object",
-    "properties": {
-        "summary": {"type": "string"}
-    }
-}
-```
 
 ## Documentation
 
@@ -581,7 +399,6 @@ We follow [Semantic Versioning](https://semver.org/):
 
 ### Release Checklist
 
-- [ ] All tests pass
 - [ ] Documentation updated
 - [ ] CHANGELOG.md updated
 - [ ] Version bumped in pyproject.toml

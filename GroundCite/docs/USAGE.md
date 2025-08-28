@@ -220,51 +220,6 @@ result = asyncio.run(advanced_analysis())
 print(result['final_content'])
 ```
 
-### Batch Processing
-
-```python
-async def batch_analysis(queries):
-    """Process multiple queries in batch"""
-    settings = AppSettings()
-    settings.AI_CONFIG.gemini_ai_key_primary = "your_key"
-    settings.ANALYSIS_CONFIG.validate = True
-    
-    agent = AIAgent(settings=settings)
-    results = []
-    
-    for query in queries:
-        try:
-            result = await agent.analyze_query(query=query)
-            results.append({
-                "query": query,
-                "success": True,
-                "data": result
-            })
-        except Exception as e:
-            results.append({
-                "query": query,
-                "success": False,
-                "error": str(e)
-            })
-    
-    return results
-
-# Process multiple queries
-queries = [
-    "Benefits of solar energy",
-    "Machine learning in finance",
-    "Future of space exploration"
-]
-
-results = asyncio.run(batch_analysis(queries))
-for result in results:
-    print(f"Query: {result['query']}")
-    print(f"Success: {result['success']}")
-    if result['success']:
-        print(f"Summary: {result['data']['final_content']}")
-    print("-" * 50)
-```
-
 ### Error Handling
 
 ```python
@@ -745,7 +700,6 @@ settings.AI_CONFIG.search_gemini_params = {
     "top_k": 40,                # Top-k sampling
     "max_output_tokens": 2048,   # Response length
     "candidate_count": 1,        # Number of candidates
-    "stop_sequences": ["END", "STOP"]  # Stop generation
 }
 
 # OpenAI-specific parameters
@@ -828,44 +782,7 @@ with open("config.json") as f:
     settings.AI_CONFIG.gemini_ai_key_primary = config["gemini_key"]
 ```
 
-### 2. Error Handling
-
-```python
-async def robust_analysis_workflow(query):
-    """Implement comprehensive error handling"""
-    max_retries = 3
-    current_retry = 0
-    
-    while current_retry < max_retries:
-        try:
-            settings = AppSettings()
-            settings.ANALYSIS_CONFIG.query = query
-            settings.AI_CONFIG.gemini_ai_key_primary = os.getenv("GEMINI_AI_KEY_PRIMARY")
-            
-            agent = AIAgent(settings=settings)
-            result = await agent.analyze_query()
-            
-            # Validate result quality
-            if result and result.get('completed'):
-                return result
-            else:
-                print(f"Analysis incomplete, retrying... ({current_retry + 1}/{max_retries})")
-                
-        except Exception as e:
-            print(f"Attempt {current_retry + 1} failed: {e}")
-            current_retry += 1
-            
-            if current_retry >= max_retries:
-                print("Max retries reached, analysis failed")
-                raise
-            
-            # Exponential backoff
-            await asyncio.sleep(2 ** current_retry)
-    
-    return None
-```
-
-### 3. Performance Optimization
+### 2. Performance Optimization
 
 ```python
 # Use appropriate model sizes
@@ -880,19 +797,9 @@ settings.AI_CONFIG.parsing_gemini_params = {
     "max_output_tokens": 4096  # More for detailed parsing
 }
 
-# Use caching for repeated queries (implement your own caching)
-query_cache = {}
-
-async def cached_analysis(query):
-    if query in query_cache:
-        return query_cache[query]
-    
-    result = await agent.analyze_query(query=query)
-    query_cache[query] = result
-    return result
 ```
 
-### 4. Schema Design
+### 3. Schema Design
 
 ```python
 # ✅ Good schema design
@@ -939,7 +846,7 @@ bad_schema = {
 }
 ```
 
-### 5. Monitoring and Logging
+### 4. Monitoring and Logging
 
 ```python
 import logging
