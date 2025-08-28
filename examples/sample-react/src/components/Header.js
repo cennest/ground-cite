@@ -7,7 +7,8 @@ const Header = ({
     backendStatus,
     onConfigClick,
     error,
-    setError
+    setError,
+    needsConfiguration = false
 }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -109,10 +110,19 @@ const Header = ({
             <button
                 className="config-button"
                 onClick={onConfigClick}
-                style={styles.configButton}
+                style={{
+                    ...styles.configButton,
+                    ...(needsConfiguration ? {
+                        background: 'linear-gradient(135deg, #ffc107, #ff9800)',
+                        color: '#000',
+                        fontWeight: '700',
+                        animation: 'pulse 2s ease-in-out infinite',
+                        boxShadow: '0 4px 20px rgba(255, 193, 7, 0.4)'
+                    } : {})
+                }}
             >
                 <Settings size={14} />
-                Configure AI Models
+                {needsConfiguration ? 'Setup Required - Configure AI Models' : 'Configure AI Models'}
             </button>
         </header>
     );

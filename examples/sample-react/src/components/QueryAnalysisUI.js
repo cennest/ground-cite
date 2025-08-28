@@ -74,11 +74,23 @@ const QueryAnalysisUI = () => {
     ]);
 
     const [savedConfigs, setSavedConfigs] = useState([]);
+    const [showApiKeyWarning, setShowApiKeyWarning] = useState(true);
 
     useEffect(() => {
         loadConfigurationsFromBackend();
         checkBackendHealth();
+        checkApiKeyConfiguration();
     }, []);
+
+    const checkApiKeyConfiguration = () => {
+        const hasGeminiKey = apiKeys.gemini.primary || apiKeys.gemini.secondary;
+        const hasOpenaiKey = apiKeys.openai;
+        setShowApiKeyWarning(!hasGeminiKey && !hasOpenaiKey);
+    };
+
+    useEffect(() => {
+        checkApiKeyConfiguration();
+    }, [apiKeys]);
 
     const checkBackendHealth = async () => {
         try {
@@ -256,7 +268,137 @@ const QueryAnalysisUI = () => {
                 onConfigClick={() => setConfigModalOpen(true)}
                 error={error}
                 setError={setError}
+                needsConfiguration={showApiKeyWarning}
             />
+
+            {/* API Key Configuration Warning */}
+            {showApiKeyWarning && (
+                <div className="api-key-warning" style={{
+                    background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1))',
+                    border: '1px solid rgba(255, 193, 7, 0.3)',
+                    borderRadius: '16px',
+                    padding: '24px',
+                    margin: '20px auto',
+                    maxWidth: '800px',
+                    backdropFilter: 'blur(10px)',
+                    boxShadow: '0 8px 32px rgba(255, 193, 7, 0.1)'
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                        <div style={{
+                            background: 'rgba(255, 193, 7, 0.2)',
+                            borderRadius: '50%',
+                            padding: '12px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            minWidth: '48px',
+                            height: '48px'
+                        }}>
+                            <span style={{ fontSize: '20px', color: '#ffc107' }}>🔑</span>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <h3 style={{
+                                color: '#ffc107',
+                                margin: '0 0 8px 0',
+                                fontSize: '18px',
+                                fontWeight: '600'
+                            }}>
+                                API Key Required to Get Started
+                            </h3>
+                            <p style={{
+                                color: 'rgba(255, 255, 255, 0.9)',
+                                margin: '0 0 16px 0',
+                                fontSize: '14px',
+                                lineHeight: '1.5'
+                            }}>
+                                GroundCite is powered by Google Gemini and requires a Gemini API key for search functionality.
+                            </p>
+                            <div style={{
+                                background: 'rgba(0, 212, 255, 0.1)',
+                                border: '1px solid rgba(0, 212, 255, 0.2)',
+                                borderRadius: '8px',
+                                padding: '12px',
+                                marginBottom: '16px'
+                            }}>
+                                <p style={{
+                                    color: 'rgba(255, 255, 255, 0.9)',
+                                    fontSize: '13px',
+                                    margin: '0 0 8px 0',
+                                    lineHeight: '1.4'
+                                }}>
+                                    💡 <strong>Tip:</strong> Get your free Gemini API key from <a
+                                        href="https://makersuite.google.com/app/apikey"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ color: '#00d4ff', textDecoration: 'none' }}
+                                    >Google AI Studio</a> (free tier includes 15 requests per minute)
+                                </p>
+                                <p style={{
+                                    color: 'rgba(255, 255, 255, 0.7)',
+                                    fontSize: '12px',
+                                    margin: 0,
+                                    lineHeight: '1.4'
+                                }}>
+                                    🔒 <strong>Privacy:</strong> Your API keys are not stored anywhere and will be removed on browser reload
+                                </p>
+                            </div>
+                            <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+                                <button
+                                    onClick={() => setConfigModalOpen(true)}
+                                    style={{
+                                        background: 'linear-gradient(135deg, #ffc107, #ff9800)',
+                                        border: 'none',
+                                        borderRadius: '8px',
+                                        padding: '12px 24px',
+                                        color: '#000',
+                                        fontWeight: '600',
+                                        fontSize: '14px',
+                                        cursor: 'pointer',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.transform = 'translateY(-1px)';
+                                        e.target.style.boxShadow = '0 4px 12px rgba(255, 193, 7, 0.3)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.transform = 'translateY(0)';
+                                        e.target.style.boxShadow = 'none';
+                                    }}
+                                >
+                                    <span>⚙️</span>
+                                    Set Up API Keys Now
+                                </button>
+                                <button
+                                    onClick={() => setShowApiKeyWarning(false)}
+                                    style={{
+                                        background: 'transparent',
+                                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                                        borderRadius: '8px',
+                                        padding: '12px 16px',
+                                        color: 'rgba(255, 255, 255, 0.7)',
+                                        fontSize: '14px',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+                                        e.target.style.color = 'rgba(255, 255, 255, 0.9)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                                        e.target.style.color = 'rgba(255, 255, 255, 0.7)';
+                                    }}
+                                >
+                                    I'll do this later
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <QueryInput
                 query={query}
@@ -267,6 +409,7 @@ const QueryAnalysisUI = () => {
                 focusedInput={focusedInput}
                 setFocusedInput={setFocusedInput}
                 onAnalyze={analyzeQuery}
+                hasApiKeys={!showApiKeyWarning}
             />
 
             <ResultsDisplay results={results} />

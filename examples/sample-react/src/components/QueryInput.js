@@ -11,7 +11,8 @@ const QueryInput = ({
     isLoading,
     focusedInput,
     setFocusedInput,
-    onAnalyze
+    onAnalyze,
+    hasApiKeys = true
 }) => {
     return (
         <div className="query-input main-container">
@@ -51,23 +52,29 @@ const QueryInput = ({
                         onChange={(e) => setQuery(e.target.value)}
                         onFocus={() => setFocusedInput(true)}
                         onBlur={() => setFocusedInput(false)}
-                        placeholder="Ask me anything..."
+                        placeholder={hasApiKeys ? "Ask me anything..." : "Configure API keys first to start analyzing..."}
+                        disabled={!hasApiKeys}
                         style={{
                             ...styles.input,
-                            ...(focusedInput ? styles.inputFocus : {})
+                            ...(focusedInput ? styles.inputFocus : {}),
+                            ...((!hasApiKeys) ? {
+                                opacity: 0.6,
+                                cursor: 'not-allowed',
+                                background: 'rgba(255, 255, 255, 0.03)'
+                            } : {})
                         }}
                         onKeyPress={(e) => {
-                            if (e.key === 'Enter' && query && !isLoading) {
+                            if (e.key === 'Enter' && query && !isLoading && hasApiKeys) {
                                 onAnalyze();
                             }
                         }}
                     />
                     <button className="button"
                         onClick={onAnalyze}
-                        disabled={!query || isLoading}
+                        disabled={!query || isLoading || !hasApiKeys}
                         style={{
                             ...styles.button,
-                            ...((!query || isLoading) ? styles.buttonDisabled : {}),
+                            ...((!query || isLoading || !hasApiKeys) ? styles.buttonDisabled : {}),
                             ...(isLoading ? {
                                 background: 'linear-gradient(-45deg, #00d4ff, #7c3aed, #00d4ff, #7c3aed)',
                                 backgroundSize: '400% 400%',
@@ -75,15 +82,19 @@ const QueryInput = ({
                                 cursor: 'not-allowed',
                                 boxShadow: '0 0 20px rgba(0, 212, 255, 0.4)',
                                 transform: 'none'
+                            } : {}),
+                            ...(!hasApiKeys ? {
+                                opacity: 0.5,
+                                cursor: 'not-allowed'
                             } : {})
                         }}
                         onMouseEnter={(e) => {
-                            if (!e.target.disabled && !isLoading) {
+                            if (!e.target.disabled && !isLoading && hasApiKeys) {
                                 Object.assign(e.target.style, styles.buttonHover);
                             }
                         }}
                         onMouseLeave={(e) => {
-                            if (!isLoading) {
+                            if (!isLoading && hasApiKeys) {
                                 Object.assign(e.target.style, styles.button);
                             }
                         }}

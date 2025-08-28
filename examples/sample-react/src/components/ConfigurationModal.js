@@ -95,7 +95,9 @@ const ConfigurationModal = ({
     onExportConfiguration,
     onImportConfiguration
 }) => {
-    const [activeTab, setActiveTab] = useState('basic');
+    // Check if API keys are configured to determine default tab
+    const hasApiKeys = apiKeys?.gemini?.primary || apiKeys?.gemini?.secondary || apiKeys?.openai;
+    const [activeTab, setActiveTab] = useState(hasApiKeys ? 'basic' : 'keys');
 
     useEffect(() => {
         const style = document.createElement('style');
@@ -307,12 +309,12 @@ const ConfigurationModal = ({
                             active={activeTab === 'schema'}
                             onClick={setActiveTab}
                         />
-                        <TabButton
+                        {/* <TabButton
                             id="saved"
                             label={window.innerWidth < 768 ? "SAV" : "Saved Configs"}
                             active={activeTab === 'saved'}
                             onClick={setActiveTab}
-                        />
+                        /> */}
                         <TabButton
                             id="keys"
                             label={window.innerWidth < 768 ? "KEY" : "API Keys"}
@@ -322,10 +324,10 @@ const ConfigurationModal = ({
                     </div>
 
                     <div className="config-actions" style={styles.configActions}>
-                        <button onClick={onSaveConfiguration} style={{ ...styles.smallButton, ...styles.buttonSuccess }}>
+                        {/* <button onClick={onSaveConfiguration} style={{ ...styles.smallButton, ...styles.buttonSuccess }}>
                             <Save size={14} />
                             Save Config
-                        </button>
+                        </button> */}
                         {/* <button onClick={onExportConfiguration} style={{ ...styles.smallButton, ...styles.buttonSecondary }}>
                             <Download size={14} />
                             Export
@@ -959,7 +961,7 @@ const ConfigurationModal = ({
                             </div>
                         )}
 
-                        {activeTab === 'saved' && (
+                        {/* {activeTab === 'saved' && (
                             <div>
                                 <div style={{
                                     display: 'flex',
@@ -1058,7 +1060,7 @@ const ConfigurationModal = ({
                                     </div>
                                 )}
                             </div>
-                        )}
+                        )} */}
 
                         {activeTab === 'keys' && (
                             <div>
@@ -1066,6 +1068,143 @@ const ConfigurationModal = ({
                                     <Brain size={18} />
                                     API Keys Configuration
                                 </h3>
+
+                                {/* Help Section */}
+                                <div style={{
+                                    marginBottom: '24px',
+                                    padding: window.innerWidth < 768 ? '16px' : '20px',
+                                    background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 152, 0, 0.08) 100%)',
+                                    borderRadius: window.innerWidth < 768 ? '8px' : '12px',
+                                    border: '1px solid rgba(255, 193, 7, 0.2)'
+                                }}>
+                                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                                        <div style={{
+                                            background: 'rgba(255, 193, 7, 0.2)',
+                                            borderRadius: '50%',
+                                            padding: '8px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            minWidth: '36px',
+                                            height: '36px'
+                                        }}>
+                                            <span style={{ fontSize: '16px' }}>💡</span>
+                                        </div>
+                                        <div style={{ flex: 1 }}>
+                                            <h4 style={{
+                                                color: '#ffc107',
+                                                margin: '0 0 8px 0',
+                                                fontSize: window.innerWidth < 768 ? '14px' : '16px',
+                                                fontWeight: '600'
+                                            }}>
+                                                GroundCite API Configuration
+                                            </h4>
+                                            <p style={{
+                                                color: 'rgba(255, 255, 255, 0.9)',
+                                                margin: '0 0 12px 0',
+                                                fontSize: window.innerWidth < 768 ? '12px' : '14px',
+                                                lineHeight: '1.5'
+                                            }}>
+                                                GroundCite is powered by Google Gemini. A Gemini API key is required for search functionality. OpenAI is optional for advanced parsing features only if the parsing type is OpenAI selected.
+                                            </p>
+                                            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+                                                <a
+                                                    href="https://makersuite.google.com/app/apikey"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    style={{
+                                                        background: 'linear-gradient(135deg, #00d4ff, #7c3aed)',
+                                                        border: 'none',
+                                                        borderRadius: '6px',
+                                                        padding: '8px 16px',
+                                                        color: '#fff',
+                                                        textDecoration: 'none',
+                                                        fontSize: window.innerWidth < 768 ? '11px' : '13px',
+                                                        fontWeight: '600',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '6px',
+                                                        transition: 'all 0.2s ease'
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        e.target.style.transform = 'translateY(-1px)';
+                                                        e.target.style.boxShadow = '0 4px 12px rgba(0, 212, 255, 0.3)';
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.target.style.transform = 'translateY(0)';
+                                                        e.target.style.boxShadow = 'none';
+                                                    }}
+                                                >
+                                                    🚀 Get Gemini API Key (Required)
+                                                </a>
+                                                <a
+                                                    href="https://platform.openai.com/api-keys"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    style={{
+                                                        background: 'transparent',
+                                                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                                                        borderRadius: '6px',
+                                                        padding: '8px 16px',
+                                                        color: 'rgba(255, 255, 255, 0.8)',
+                                                        textDecoration: 'none',
+                                                        fontSize: window.innerWidth < 768 ? '11px' : '13px',
+                                                        fontWeight: '500',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '6px',
+                                                        transition: 'all 0.2s ease'
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        e.target.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+                                                        e.target.style.color = 'rgba(255, 255, 255, 1)';
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                                                        e.target.style.color = 'rgba(255, 255, 255, 0.8)';
+                                                    }}
+                                                >
+                                                    ⚡ Get OpenAI API Key (Optional)
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Privacy Notice */}
+                                <div style={{
+                                    marginBottom: '24px',
+                                    padding: window.innerWidth < 768 ? '12px' : '16px',
+                                    background: 'rgba(34, 197, 94, 0.05)',
+                                    borderRadius: window.innerWidth < 768 ? '6px' : '8px',
+                                    border: '1px solid rgba(34, 197, 94, 0.2)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '12px'
+                                }}>
+                                    <div style={{
+                                        background: 'rgba(34, 197, 94, 0.2)',
+                                        borderRadius: '50%',
+                                        padding: '6px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        minWidth: '32px',
+                                        height: '32px'
+                                    }}>
+                                        <span style={{ fontSize: '14px' }}>🔒</span>
+                                    </div>
+                                    <div>
+                                        <p style={{
+                                            color: 'rgba(255, 255, 255, 0.9)',
+                                            fontSize: window.innerWidth < 768 ? '12px' : '14px',
+                                            margin: 0,
+                                            fontWeight: '500'
+                                        }}>
+                                            <strong>Privacy Protected:</strong> Your API keys are not stored anywhere and will be removed on browser reload
+                                        </p>
+                                    </div>
+                                </div>
 
                                 <div style={{
                                     marginBottom: '24px',
@@ -1105,14 +1244,14 @@ const ConfigurationModal = ({
                                                 color: '#ffffff',
                                                 margin: 0
                                             }}>
-                                                Google Gemini
+                                                Google Gemini (Required)
                                             </h4>
                                             <p style={{
                                                 fontSize: window.innerWidth < 768 ? '11px' : '14px',
                                                 color: '#a1a1aa',
                                                 margin: 0
                                             }}>
-                                                Configure primary and backup API keys
+                                                Core AI engine for search and analysis
                                             </p>
                                         </div>
                                     </div>
@@ -1238,14 +1377,14 @@ const ConfigurationModal = ({
                                                 color: '#ffffff',
                                                 margin: 0
                                             }}>
-                                                OpenAI
+                                                OpenAI (Optional)
                                             </h4>
                                             <p style={{
                                                 fontSize: window.innerWidth < 768 ? '11px' : '14px',
                                                 color: '#a1a1aa',
                                                 margin: 0
                                             }}>
-                                                Configure your OpenAI API access
+                                                Enhanced parsing capabilities
                                             </p>
                                         </div>
                                     </div>
@@ -1286,6 +1425,41 @@ const ConfigurationModal = ({
                                                 }}
                                             />
                                         </div>
+                                    </div>
+                                </div>
+
+                                {/* Privacy Notice */}
+                                <div style={{
+                                    marginBottom: '24px',
+                                    padding: window.innerWidth < 768 ? '12px' : '16px',
+                                    background: 'rgba(34, 197, 94, 0.05)',
+                                    borderRadius: window.innerWidth < 768 ? '6px' : '8px',
+                                    border: '1px solid rgba(34, 197, 94, 0.2)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '12px'
+                                }}>
+                                    <div style={{
+                                        background: 'rgba(34, 197, 94, 0.2)',
+                                        borderRadius: '50%',
+                                        padding: '6px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        minWidth: '32px',
+                                        height: '32px'
+                                    }}>
+                                        <span style={{ fontSize: '14px' }}>🔒</span>
+                                    </div>
+                                    <div>
+                                        <p style={{
+                                            color: 'rgba(255, 255, 255, 0.9)',
+                                            fontSize: window.innerWidth < 768 ? '12px' : '14px',
+                                            margin: 0,
+                                            fontWeight: '500'
+                                        }}>
+                                            <strong>Privacy Protected:</strong> Your API keys are not stored anywhere and will be removed on browser reload
+                                        </p>
                                     </div>
                                 </div>
 
