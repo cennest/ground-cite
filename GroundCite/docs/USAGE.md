@@ -102,13 +102,13 @@ gemini-groundcite analyze \
 # Include only academic sources
 gemini-groundcite analyze \
   -q "Quantum computing research" \
-  --include-sites "arxiv.org,nature.com,science.org" \
+  --include-sites "https://www.arxiv.org,https://www.nature.com,science.org" \
   --parse
 
 # Exclude unreliable sources
 gemini-groundcite analyze \
   -q "Health benefits of meditation" \
-  --exclude-sites "spam.com,unreliable.net"
+  --exclude-sites "https://www.spam.com,https://www.unreliable.net"
 ```
 
 ### Configuration Management
@@ -207,7 +207,7 @@ async def advanced_analysis():
     settings.AI_CONFIG.parse_model_name = "gemini-1.5-pro"
     
     # Site filtering
-    settings.ANALYSIS_CONFIG.included_sites = "pubmed.ncbi.nlm.nih.gov,nejm.org,nature.com"
+    settings.ANALYSIS_CONFIG.included_sites = "https://www.pubmed.ncbi.nlm.nih.gov,https://www.nejm.org,https://www.nature.com"
     
     # Initialize and run
     agent = AIAgent(settings=settings)
@@ -493,7 +493,7 @@ async def academic_research_analysis(research_question):
     '''
     
     # Filter for academic sources
-    settings.ANALYSIS_CONFIG.included_sites = "arxiv.org,pubmed.ncbi.nlm.nih.gov,scholar.google.com,jstor.org"
+    settings.ANALYSIS_CONFIG.included_sites = "https://www.arxiv.org,https://www.pubmed.ncbi.nlm.nih.gov,https://www.scholar.google.com,https://www.jstor.org"
     
     settings.AI_CONFIG.gemini_ai_key_primary = "your_key"
     
@@ -549,7 +549,7 @@ async def market_research_analysis(market_topic):
     '''
     
     # Include business and financial sources
-    settings.ANALYSIS_CONFIG.included_sites = "bloomberg.com,reuters.com,marketwatch.com,forbes.com"
+    settings.ANALYSIS_CONFIG.included_sites = "https://www.bloomberg.com,https://www.reuters.com,marketwatch.com,https://www.forbes.com"
     
     settings.AI_CONFIG.gemini_ai_key_primary = "your_key"
     
@@ -607,7 +607,7 @@ async def technical_analysis(technology):
     '''
     
     # Include technical documentation sources
-    settings.ANALYSIS_CONFIG.included_sites = "github.com,stackoverflow.com,medium.com,dev.to"
+    settings.ANALYSIS_CONFIG.included_sites = "https://www.github.com,https://www.stackoverflow.com,https://www.medium.com,https://www.dev.to"
     
     settings.AI_CONFIG.gemini_ai_key_primary = "your_key"
     
@@ -675,7 +675,7 @@ async def fact_check_analysis(claim):
     '''
     
     # Include authoritative news and fact-checking sites
-    settings.ANALYSIS_CONFIG.included_sites = "snopes.com,factcheck.org,politifact.com,reuters.com,ap.org"
+    settings.ANALYSIS_CONFIG.included_sites = "https://www.snopes.com,https://www.factcheck.org,https://www.politifact.com,https://www.reuters.com,https://www.ap.org"
     
     settings.AI_CONFIG.gemini_ai_key_primary = "your_key"
     
@@ -699,7 +699,6 @@ settings.AI_CONFIG.search_gemini_params = {
     "top_p": 0.9,               # Nucleus sampling
     "top_k": 40,                # Top-k sampling
     "max_output_tokens": 2048,   # Response length
-    "candidate_count": 1,        # Number of candidates
 }
 
 # OpenAI-specific parameters
@@ -709,7 +708,6 @@ settings.AI_CONFIG.parsing_openai_params = {
     "top_p": 1.0,               # Nucleus sampling
     "frequency_penalty": 0.0,    # Frequency penalty
     "presence_penalty": 0.0,     # Presence penalty
-    "stop": ["---", "END"]       # Stop sequences
 }
 ```
 

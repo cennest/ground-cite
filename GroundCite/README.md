@@ -452,10 +452,10 @@ gemini-groundcite analyze \
 ### Site Filtering
 ```python
 # Include only specific domains
-settings.ANALYSIS_CONFIG.included_sites = "nature.com,science.org,arxiv.org"
+settings.ANALYSIS_CONFIG.included_sites = "https://www.nature.com,https://www.science.org,https://www.arxiv.org"
 
 # Exclude unreliable sources
-settings.ANALYSIS_CONFIG.excluded_sites = "example-spam.com,unreliable.net"
+settings.ANALYSIS_CONFIG.excluded_sites = "https://www.example-spam.com,https://www.unreliable.net"
 ```
 
 ## 📈 Monitoring and Logging
@@ -523,11 +523,6 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # Install in development mode
 pip install -e ".[dev]"
 
-# Run tests
-pytest
-
-# Format code
-black gemini_groundcite/
 ```
 
 ## 📄 License

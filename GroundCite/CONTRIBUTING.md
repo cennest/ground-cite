@@ -54,32 +54,6 @@ We are committed to providing a welcoming and inspiring community for all. Pleas
    pip install -e ".[dev]"
    ```
 
-4. **Set up pre-commit hooks** (optional but recommended)
-   ```bash
-   pre-commit install
-   ```
-
-5. **Verify installation**
-   ```bash
-   gemini-groundcite --help
-   ```
-
-## Development Setup
-
-### Environment Variables
-
-Create a `.env` file in the project root:
-
-```bash
-# AI Provider Keys (for testing)
-GEMINI_AI_KEY_PRIMARY=your_test_key
-OPENAI_API_KEY=your_test_key
-
-# Development Settings
-ENVIRONMENT=development
-LOG_LEVEL=DEBUG
-```
-
 ## Contribution Guidelines
 
 ### Types of Contributions
@@ -92,13 +66,6 @@ We welcome several types of contributions:
 4. **Documentation** - Improve or add documentation
 5. **Performance Improvements** - Optimize existing code
 
-### What We're Looking For
-
-- **New AI Provider Integrations** - Support for additional AI services
-- **Processing Node Extensions** - New analysis capabilities
-- **Performance Optimizations** - Speed and efficiency improvements
-- **UI/UX Enhancements** - Better CLI and API interfaces
-- **Documentation Improvements** - Clearer guides and examples
 
 ## Pull Request Process
 
@@ -375,18 +342,6 @@ When making changes:
 - Update README if major changes
 - Update CHANGELOG.md
 
-### Building Documentation
-
-```bash
-# Install docs dependencies
-pip install -e ".[docs]"
-
-# Build API documentation
-sphinx-build -b html docs/ docs/_build/
-
-# Serve documentation locally
-cd docs/_build && python -m http.server 8080
-```
 
 ## Release Process
 

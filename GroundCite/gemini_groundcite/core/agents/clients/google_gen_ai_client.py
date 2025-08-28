@@ -91,7 +91,6 @@ class GoogleGenAI:
         config_params = {
             "response_modalities": ["TEXT"],
             "temperature": temperature,
-            "candidate_count": 1,
             **config_kwargs
         }
 
