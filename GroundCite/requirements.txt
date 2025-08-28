@@ -1,0 +1,9 @@
+pydantic>=1.8.0
+langgraph>=0.6.6
+openai>=1.100.2
+google-genai>=1.31.0
+punq>=0.7.0
+click>=8.0.0
+rich>=12.0.0
+fastapi>=0.116.1
+uvicorn[standard]>=0.35.0

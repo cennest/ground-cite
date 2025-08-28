@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gemini_groundcite"
+version = "1.0.0"
+description = "A Python package for analyzing text files and strings"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["text", "analysis", "nlp", "statistics", "ground-truth", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pydantic>=1.8.0",
+    "langgraph",
+    "openai",
+    "google-genai",
+    "punq>=0.7.0",
+    "click>=8.0.0",
+    "rich>=12.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=21.0",
+    "flake8>=3.8",
+    "mypy>=0.800",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/gemini_groundcite"
+Repository = "https://github.com/yourusername/gemini_groundcite.git"
+"Bug Tracker" = "https://github.com/yourusername/gemini_groundcite/issues"
+
+[project.scripts]
+gemini_groundcite = "gemini_groundcite.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gemini_groundcite*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=gemini_groundcite --cov-report=html --cov-report=term-missing"
