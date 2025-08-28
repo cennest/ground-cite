@@ -20,10 +20,6 @@ This guide provides comprehensive examples and best practices for using GroundCi
 # Install GroundCite
 pip install gemini-groundcite
 
-# Set up environment variables
-export GEMINI_AI_KEY_PRIMARY="your_gemini_api_key"
-export OPENAI_API_KEY="your_openai_api_key"  # Optional
-
 # Verify installation
 gemini-groundcite --help
 ```
@@ -32,14 +28,15 @@ gemini-groundcite --help
 
 ```bash
 # Simple query analysis
-gemini-groundcite analyze -q "What are the benefits of renewable energy?"
+gemini-groundcite analyze -q "What are the benefits of renewable energy? --gemini-key your_gemeni_key"
 
 # With validation and structured parsing
 gemini-groundcite analyze \
   -q "Latest developments in quantum computing" \
   --validate \
   --parse \
-  --schema '{"summary": {"type": "string"}, "developments": {"type": "array"}}'
+  --schema '{"summary": {"type": "string"}, "developments": {"type": "array"}}' \
+  --gemini-key your_gemeni_key
 ```
 
 ## CLI Usage
@@ -48,7 +45,7 @@ gemini-groundcite analyze \
 
 #### 1. Simple Analysis
 ```bash
-gemini-groundcite analyze -q "How does machine learning work?"
+gemini-groundcite analyze -q "How does machine learning work? --gemini-key your_gemeni_key"
 ```
 
 #### 2. Analysis with Validation
@@ -56,6 +53,7 @@ gemini-groundcite analyze -q "How does machine learning work?"
 gemini-groundcite analyze \
   -q "Climate change impact on agriculture" \
   --validate \
+  --gemini-key your_gemeni_key \
   --verbose
 ```
 
@@ -71,6 +69,7 @@ gemini-groundcite analyze \
     "growth_rate": {"type": "string"},
     "challenges": {"type": "array", "items": {"type": "string"}}
   }' \
+  --gemini-key your_gemeni_key \
   --verbose
 ```
 
@@ -82,9 +81,11 @@ gemini-groundcite analyze \
 gemini-groundcite analyze \
   -q "AI ethics considerations" \
   --provider openai \
-  --openai-key your_openai_key \
   --parse \
-  --parse_model gpt-4
+  --parse_model gpt-4 \
+  --gemini-key your_gemeni_key \
+  --openai-key your_openai_key 
+
 
 # Use different models for different stages
 gemini-groundcite analyze \
@@ -95,6 +96,8 @@ gemini-groundcite analyze \
   --provider openai \
   --validate \
   --parse
+  --gemini-key your_gemeni_key \
+  --openai-key your_openai_key 
 ```
 
 #### Site Filtering
@@ -103,12 +106,15 @@ gemini-groundcite analyze \
 gemini-groundcite analyze \
   -q "Quantum computing research" \
   --include-sites "https://www.arxiv.org,https://www.nature.com,science.org" \
-  --parse
+  --parse \
+  --gemini-key your_gemeni_key 
 
 # Exclude unreliable sources
 gemini-groundcite analyze \
   -q "Health benefits of meditation" \
-  --exclude-sites "https://www.spam.com,https://www.unreliable.net"
+  --exclude-sites "https://www.spam.com,https://www.unreliable.net" \
+  --gemini-key your_gemeni_key 
+
 ```
 
 ### Configuration Management
