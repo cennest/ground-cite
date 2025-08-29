@@ -1485,40 +1485,6 @@ const ConfigurationModal = ({
                                     </div>
                                 </div>
 
-                                {/* Privacy Notice */}
-                                <div style={{
-                                    marginBottom: '24px',
-                                    padding: window.innerWidth < 768 ? '12px' : '16px',
-                                    background: 'rgba(34, 197, 94, 0.05)',
-                                    borderRadius: window.innerWidth < 768 ? '6px' : '8px',
-                                    border: '1px solid rgba(34, 197, 94, 0.2)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '12px'
-                                }}>
-                                    <div style={{
-                                        background: 'rgba(34, 197, 94, 0.2)',
-                                        borderRadius: '50%',
-                                        padding: '6px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        minWidth: '32px',
-                                        height: '32px'
-                                    }}>
-                                        <span style={{ fontSize: '14px' }}>🔒</span>
-                                    </div>
-                                    <div>
-                                        <p style={{
-                                            color: 'rgba(255, 255, 255, 0.9)',
-                                            fontSize: window.innerWidth < 768 ? '12px' : '14px',
-                                            margin: 0,
-                                            fontWeight: '500'
-                                        }}>
-                                            <strong>Privacy Protected:</strong> Your API keys are not stored anywhere and will be removed on browser reload
-                                        </p>
-                                    </div>
-                                </div>
 
                                 <div style={{
                                     padding: window.innerWidth < 768 ? '16px' : '20px',
