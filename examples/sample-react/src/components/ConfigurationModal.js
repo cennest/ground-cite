@@ -314,31 +314,31 @@ const ConfigurationModal = ({
                     <div className="tabs" style={styles.tabs}>
                         <TabButton
                             id="basic"
-                            label={window.innerWidth < 768 ? "CFG" : "Core Config"}
+                            label="Core Config"
                             active={activeTab === 'basic'}
                             onClick={setActiveTab}
                         />
                         <TabButton
                             id="models"
-                            label={window.innerWidth < 768 ? "AI" : "AI Models"}
+                            label="AI Models"
                             active={activeTab === 'models'}
                             onClick={setActiveTab}
                         />
                         <TabButton
                             id="schema"
-                            label={window.innerWidth < 768 ? "SCH" : "Schema Designer"}
+                            label="Schema Designer"
                             active={activeTab === 'schema'}
                             onClick={setActiveTab}
                         />
                         {/* <TabButton
                             id="saved"
-                            label={window.innerWidth < 768 ? "SAV" : "Saved Configs"}
+                            label="Saved Configs"
                             active={activeTab === 'saved'}
                             onClick={setActiveTab}
                         /> */}
                         <TabButton
                             id="keys"
-                            label={window.innerWidth < 768 ? "KEY" : "API Keys"}
+                            label="API Keys"
                             active={activeTab === 'keys'}
                             onClick={setActiveTab}
                         />
@@ -1551,7 +1551,7 @@ const ConfigurationModal = ({
                             </div>
                         )}
                     </div>
-                    
+
                     {/* Auto-save notice */}
                     <div style={{
                         marginTop: '24px',
