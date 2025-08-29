@@ -201,9 +201,6 @@ async def analyze_query_endpoint(request: QueryAnalysisRequest):
         
         # AI provider configuration
         settings.AI_CONFIG.gemini_ai_key_primary = gemini_keys.get('primary', '')
-        settings.AI_CONFIG.gemini_ai_key_secondary = (
-            gemini_keys.get('secondary') or gemini_keys.get('primary', '')
-        )
         settings.AI_CONFIG.open_ai_key = request.api_keys.get('openai', '')
         settings.AI_CONFIG.parsing_provider = request.parsing_provider
         

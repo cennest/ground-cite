@@ -79,7 +79,10 @@ def create_search_node(
             api_key = (
                 settings.AI_CONFIG.gemini_ai_key_primary
                 if search_aggregator_state.retry_count == 0
-                else settings.AI_CONFIG.gemini_ai_key_secondary
+                else (
+                    settings.AI_CONFIG.gemini_ai_key_secondary
+                    or settings.AI_CONFIG.gemini_ai_key_primary
+                )
             )
 
             logger.log_debug(
