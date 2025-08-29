@@ -258,34 +258,55 @@ const ConfigurationModal = ({
                         }}>
                             Configure AI models and parameters
                         </p>
+                        <div style={{
+                            marginTop: '8px',
+                            padding: '8px 12px',
+                            background: 'rgba(34, 197, 94, 0.1)',
+                            borderRadius: '6px',
+                            border: '1px solid rgba(34, 197, 94, 0.2)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                        }}>
+                            <CheckCircle size={14} style={{ color: '#22c55e' }} />
+                            <span style={{
+                                fontSize: '12px',
+                                color: '#22c55e',
+                                fontWeight: '500'
+                            }}>
+                                Changes apply automatically
+                            </span>
+                        </div>
                     </div>
                     <button
                         onClick={onClose}
                         style={{
-                            background: 'rgba(255, 255, 255, 0.1)',
+                            background: 'linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%)',
                             border: 'none',
-                            color: '#a1a1aa',
+                            color: '#ffffff',
                             cursor: 'pointer',
-                            padding: '8px',
+                            padding: '10px 16px',
                             borderRadius: '8px',
                             transition: 'all 0.3s ease',
-                            minWidth: 'auto',
-                            minHeight: 'auto',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
+                            gap: '8px',
+                            fontSize: '14px',
+                            fontWeight: '600',
                             flexShrink: 0
                         }}
                         onMouseEnter={(e) => {
-                            e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-                            e.target.style.color = '#ffffff';
+                            e.target.style.transform = 'translateY(-1px)';
+                            e.target.style.boxShadow = '0 4px 12px rgba(0, 212, 255, 0.4)';
                         }}
                         onMouseLeave={(e) => {
-                            e.target.style.background = 'rgba(255, 255, 255, 0.1)';
-                            e.target.style.color = '#a1a1aa';
+                            e.target.style.transform = 'translateY(0)';
+                            e.target.style.boxShadow = 'none';
                         }}
                     >
-                        <X size={20} />
+                        <CheckCircle size={16} />
+                        {window.innerWidth < 768 ? 'Apply' : 'Apply & Close'}
                     </button>
                 </div>
 
@@ -1529,6 +1550,41 @@ const ConfigurationModal = ({
                                 </div>
                             </div>
                         )}
+                    </div>
+                    
+                    {/* Auto-save notice */}
+                    <div style={{
+                        marginTop: '24px',
+                        padding: '12px 16px',
+                        background: 'rgba(0, 212, 255, 0.05)',
+                        borderRadius: '8px',
+                        border: '1px solid rgba(0, 212, 255, 0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                    }}>
+                        <div style={{
+                            width: '20px',
+                            height: '20px',
+                            background: 'linear-gradient(135deg, #00d4ff, #7c3aed)',
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                        }}>
+                            <CheckCircle size={12} color="white" />
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <p style={{
+                                margin: 0,
+                                fontSize: window.innerWidth < 768 ? '11px' : '13px',
+                                color: 'rgba(255, 255, 255, 0.8)',
+                                lineHeight: '1.4'
+                            }}>
+                                <strong style={{ color: '#00d4ff' }}>Auto-Save:</strong> All configuration changes are applied instantly and persist during your session. Simply close when you're done configuring.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
