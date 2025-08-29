@@ -294,9 +294,6 @@ class GraphExecutor:
                 # Backward Compatibility Fields
                 "completed": final_orchestration_state.completed,
                 "final_content": final_orchestration_state.final_content,
-                "search_content": final_orchestration_state.search_content,
-                "validation_response": final_orchestration_state.validation_response,
-                "search_meta_data": final_orchestration_state.search_meta_data,
                                 
                 # Execution Performance Metrics
                 "execution_metrics": {
