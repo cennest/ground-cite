@@ -826,6 +826,42 @@ const ConfigurationModal = ({
                                     </div>
                                 </div>
 
+                                {/* Helper Text */}
+                                <div style={{
+                                    marginBottom: '20px',
+                                    padding: window.innerWidth < 768 ? '12px' : '16px',
+                                    background: 'rgba(0, 212, 255, 0.05)',
+                                    borderRadius: window.innerWidth < 768 ? '6px' : '8px',
+                                    border: '1px solid rgba(0, 212, 255, 0.2)',
+                                    display: 'flex',
+                                    alignItems: 'flex-start',
+                                    gap: '10px'
+                                }}>
+                                    <div style={{
+                                        background: 'rgba(0, 212, 255, 0.2)',
+                                        borderRadius: '50%',
+                                        padding: '4px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        minWidth: '24px',
+                                        height: '24px',
+                                        flexShrink: 0
+                                    }}>
+                                        <span style={{ fontSize: '12px' }}>💡</span>
+                                    </div>
+                                    <div>
+                                        <p style={{
+                                            color: 'rgba(255, 255, 255, 0.9)',
+                                            fontSize: window.innerWidth < 768 ? '12px' : '14px',
+                                            margin: 0,
+                                            lineHeight: '1.4'
+                                        }}>
+                                            <strong style={{ color: '#00d4ff' }}>How to use:</strong> Add your desired fields using "Add Field", then click <strong style={{ color: '#22c55e' }}>"Generate"</strong> to apply the schema to the Core Config tab.
+                                        </p>
+                                    </div>
+                                </div>
+
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                                     {schemaKeys.map((key, index) => (
                                         window.innerWidth < 768 ? (
