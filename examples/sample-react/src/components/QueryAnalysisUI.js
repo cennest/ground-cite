@@ -447,6 +447,74 @@ const QueryAnalysisUI = () => {
                 onExportConfiguration={exportConfiguration}
                 onImportConfiguration={importConfiguration}
             />
+
+            {/* Open Source Attribution Footer */}
+            <footer style={{
+                marginTop: '32px',
+                padding: '16px 24px',
+                background: 'rgba(255, 255, 255, 0.02)',
+                borderRadius: '12px',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                textAlign: 'center'
+            }}>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: window.innerWidth < 768 ? 'column' : 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: window.innerWidth < 768 ? '12px' : '16px',
+                    fontSize: '12px',
+                    color: '#a1a1aa'
+                }}>
+                    <span>
+                        Open source project powered by
+                        <span style={{ color: '#00d4ff', fontWeight: '500', marginLeft: '4px' }}>Google Gemini</span>
+                    </span>
+                    <span style={{ color: '#71717a' }}>•</span>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                    }}>
+                        <span>Created by</span>
+                        <a
+                            href="https://www.cennest.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                textDecoration: 'none',
+                                color: '#e4e4e7',
+                                fontWeight: '500',
+                                transition: 'all 0.2s ease',
+                                padding: '2px 6px',
+                                borderRadius: '4px'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.color = '#00d4ff';
+                                e.target.style.background = 'rgba(0, 212, 255, 0.1)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.color = '#e4e4e7';
+                                e.target.style.background = 'transparent';
+                            }}
+                        >
+                            <img
+                                src="/Cennest_Logo.png"
+                                alt="Cennest Logo"
+                                style={{
+                                    width: 'auto',
+                                    height: '24px',
+                                    maxWidth: '80px',
+                                    objectFit: 'contain'
+                                }}
+                            />
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 };
