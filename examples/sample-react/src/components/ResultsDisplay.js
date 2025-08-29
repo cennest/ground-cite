@@ -115,8 +115,23 @@ const ResultsDisplay = ({ results }) => {
                             color: '#ffffff',
                             margin: 0
                         }}>
-                            {results.execution_metrics?.token_usage ?
-                                JSON.parse(results.execution_metrics.token_usage).search?.total_tokens || 'N/A' : 'N/A'}
+                            {results.execution_metrics?.token_usage ? (() => {
+                                try {
+                                    const tokenData = JSON.parse(results.execution_metrics.token_usage);
+                                    let totalTokens = 0;
+
+                                    // Sum tokens from all operations (search, validation, parse)
+                                    Object.values(tokenData).forEach(operation => {
+                                        if (operation && operation.total_tokens) {
+                                            totalTokens += operation.total_tokens;
+                                        }
+                                    });
+
+                                    return totalTokens > 0 ? totalTokens.toLocaleString() : 'N/A';
+                                } catch (e) {
+                                    return 'N/A';
+                                }
+                            })() : 'N/A'}
                         </p>
                     </div>
 
