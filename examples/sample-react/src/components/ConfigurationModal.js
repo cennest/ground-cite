@@ -344,20 +344,39 @@ const ConfigurationModal = ({
                         />
                     </div>
 
-                    <div className="config-actions" style={styles.configActions}>
-                        {/* <button onClick={onSaveConfiguration} style={{ ...styles.smallButton, ...styles.buttonSuccess }}>
-                            <Save size={14} />
-                            Save Config
-                        </button> */}
-                        {/* <button onClick={onExportConfiguration} style={{ ...styles.smallButton, ...styles.buttonSecondary }}>
-                            <Download size={14} />
-                            Export
-                        </button> */}
-                        <label style={{ ...styles.smallButton, ...styles.buttonSecondary, cursor: 'pointer' }}>
-                            <Upload size={14} />
-                            Import
-                            <input type="file" accept=".json" onChange={onImportConfiguration} style={{ display: 'none' }} />
-                        </label>
+                    {/* Privacy Notice */}
+                    <div style={{
+                        marginBottom: '24px',
+                        padding: window.innerWidth < 768 ? '12px' : '16px',
+                        background: 'rgba(34, 197, 94, 0.05)',
+                        borderRadius: window.innerWidth < 768 ? '6px' : '8px',
+                        border: '1px solid rgba(34, 197, 94, 0.2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px'
+                    }}>
+                        <div style={{
+                            background: 'rgba(34, 197, 94, 0.2)',
+                            borderRadius: '50%',
+                            padding: '6px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            minWidth: '32px',
+                            height: '32px'
+                        }}>
+                            <span style={{ fontSize: '14px' }}>🔒</span>
+                        </div>
+                        <div>
+                            <p style={{
+                                color: 'rgba(255, 255, 255, 0.9)',
+                                fontSize: window.innerWidth < 768 ? '12px' : '14px',
+                                margin: 0,
+                                fontWeight: '500'
+                            }}>
+                                <strong>Privacy Protected:</strong> Your API keys and configurations are not stored anywhere and will be removed on browser reload
+                            </p>
+                        </div>
                     </div>
 
                     <div className="config-panel" style={styles.configPanel}>
@@ -1225,41 +1244,6 @@ const ConfigurationModal = ({
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                {/* Privacy Notice */}
-                                <div style={{
-                                    marginBottom: '24px',
-                                    padding: window.innerWidth < 768 ? '12px' : '16px',
-                                    background: 'rgba(34, 197, 94, 0.05)',
-                                    borderRadius: window.innerWidth < 768 ? '6px' : '8px',
-                                    border: '1px solid rgba(34, 197, 94, 0.2)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '12px'
-                                }}>
-                                    <div style={{
-                                        background: 'rgba(34, 197, 94, 0.2)',
-                                        borderRadius: '50%',
-                                        padding: '6px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        minWidth: '32px',
-                                        height: '32px'
-                                    }}>
-                                        <span style={{ fontSize: '14px' }}>🔒</span>
-                                    </div>
-                                    <div>
-                                        <p style={{
-                                            color: 'rgba(255, 255, 255, 0.9)',
-                                            fontSize: window.innerWidth < 768 ? '12px' : '14px',
-                                            margin: 0,
-                                            fontWeight: '500'
-                                        }}>
-                                            <strong>Privacy Protected:</strong> Your API keys are not stored anywhere and will be removed on browser reload
-                                        </p>
                                     </div>
                                 </div>
 
