@@ -80,8 +80,14 @@ class AIAgent:
             Optional[Dict[str, Any]]: Analysis results containing:
                 - search_results: Web search findings
                 - validated_content: AI-validated information (if validation enabled)
-                - parsed_data: Structured data (if parsing enabled)
-                - metadata: Execution metadata and statistics
+                - final_content: Structured data (if parsing enabled)
+                - execution_metrics: Enhanced execution metrics including:
+                    * correlation_id: Request tracking identifier
+                    * query: The analyzed query
+                    * pipeline details (total_nodes_executed, nodes_completion_status)
+                    * resource usage (token_usage)
+                    * configuration (validation_enabled, parsing_enabled, ai_provider)
+                    * status and error information
         
         Raises:
             AIAgentError: If the analysis execution fails
@@ -105,13 +111,10 @@ class AIAgent:
             )
         
         # Prepare execution metadata
-        start_time = datetime.now()
         execution_metadata = {
-            "correlation_id": correlation_id,
             "query": self.settings.ANALYSIS_CONFIG.query,
             "validation_enabled": self.settings.ANALYSIS_CONFIG.validate,
             "parsing_enabled": self.settings.ANALYSIS_CONFIG.parse,
-            "start_time": start_time.isoformat(),
             "ai_provider": self.settings.AI_CONFIG.parsing_provider,
             "max_retries": max_retries
         }
@@ -128,23 +131,30 @@ class AIAgent:
                 correlation_id=correlation_id
             )
             
-            # Add execution metadata to result
-            end_time = datetime.now()
-            execution_duration = (end_time - start_time).total_seconds()
+            # Merge execution metadata with execution metrics from pipeline
             
             if result:
-                result["execution_metadata"] = {
-                    **execution_metadata,
-                    "end_time": end_time.isoformat(),
-                    "duration_seconds": execution_duration,
-                    "status": "success"
-                }
+                # Extract execution metrics from pipeline result
+                pipeline_metrics = result.get("execution_metrics", {})
+                
+                # Add metadata fields to existing execution_metrics structure
+                pipeline_metrics.update({
+                    # Add metadata fields that aren't already in execution_metrics
+                    "query": self.settings.ANALYSIS_CONFIG.query,
+                    "validation_enabled": self.settings.ANALYSIS_CONFIG.validate,
+                    "parsing_enabled": self.settings.ANALYSIS_CONFIG.parse,
+                    "ai_provider": self.settings.AI_CONFIG.parsing_provider,
+                    "max_retries": max_retries                  
+                })
+                
+                # Update the execution_metrics in result (keeping existing structure)
+                result["execution_metrics"] = pipeline_metrics
                 
                 self.logger.log_info(
-                    message=f"Successfully completed query analysis in {execution_duration:.2f}s",
+                    message=f"Successfully completed query analysis",
                     custom_dimensions={
-                        **execution_metadata,
-                        "duration_seconds": execution_duration,
+                        "correlation_id": correlation_id,
+                        "total_nodes_executed": pipeline_metrics.get("total_nodes_executed", 0),
                         "result_keys": list(result.keys()) if result else []
                     }
                 )
@@ -152,16 +162,22 @@ class AIAgent:
                 self.logger.log_warning(
                     message="Query analysis completed but returned no results",
                     custom_dimensions={
-                        **execution_metadata,
-                        "duration_seconds": execution_duration
+                        "correlation_id": correlation_id
                     }
                 )
             
             return result
             
         except Exception as e:
+            
             error_details = {
-                **execution_metadata,
+                "correlation_id": correlation_id,
+                "query": self.settings.ANALYSIS_CONFIG.query,
+                "validation_enabled": self.settings.ANALYSIS_CONFIG.validate,
+                "parsing_enabled": self.settings.ANALYSIS_CONFIG.parse,
+                "ai_provider": self.settings.AI_CONFIG.parsing_provider,
+                "max_retries": max_retries,
+                "status": "error",
                 "error_type": type(e).__name__,
                 "error_message": str(e)
             }
