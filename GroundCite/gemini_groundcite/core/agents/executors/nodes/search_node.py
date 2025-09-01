@@ -7,6 +7,7 @@ requests and returns structured search results with citations.
 """
 
 import json
+import re
 from typing import Any, Dict, Callable, Tuple
 
 from ..core_helper import add_inline_citations, extract_citations, filter_citations_by_filters, get_url_map, remove_content_by_citations, unmask_urls, update_citations
@@ -100,14 +101,14 @@ def create_search_node(
             # Parse excluded sites from configuration
             excluded_sites = [
                 site.strip()
-                for site in settings.ANALYSIS_CONFIG.excluded_sites.split(",")
+                for site in re.split(r"[,\n]+", settings.ANALYSIS_CONFIG.excluded_sites)
                 if site.strip()
             ]
 
             # Parse included sites from configuration
             included_sites = [
                 site.strip()
-                for site in settings.ANALYSIS_CONFIG.included_sites.split(",")
+                for site in re.split(r"[,\n]+", settings.ANALYSIS_CONFIG.included_sites)
                 if site.strip()
             ]
 
