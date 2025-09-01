@@ -1,7 +1,7 @@
 // frontend/src/services/api.js
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://questify-server-gdegcmawbde8hxfn.centralindia-01.azurewebsites.net';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://ground-cite-server-brhcaaa4b2ezhwep.centralindia-01.azurewebsites.net';
 
 // Create axios instance with default config
 const api = axios.create({
