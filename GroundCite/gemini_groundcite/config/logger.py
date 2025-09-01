@@ -10,7 +10,7 @@ import os
 import logging
 from ..core.di.core_di import coredi_injectable
 from .settings import AppSettings
-
+from opencensus.ext.azure.log_exporter import AzureLogHandler
 
 @coredi_injectable()
 class AppLogger:
@@ -42,21 +42,25 @@ class AppLogger:
 
         # Prevent duplicate handlers by checking if handlers already exist
         if not self.logger.handlers:
-                # Set up logs directory path
-                LOGS_DIR = os.path.join(settings.BASE_DIR, "logs")
-                # Create logs directory if it doesn't exist
-                os.makedirs(LOGS_DIR, exist_ok=True)
+            connection_string = os.getenv('APPINSIGHTS_CONNECTION_STRING')
+            azure_handler = AzureLogHandler(connection_string=connection_string)
+            self.logger.addHandler(azure_handler)
+
+                # # Set up logs directory path
+                # LOGS_DIR = os.path.join(settings.BASE_DIR, "logs")
+                # # Create logs directory if it doesn't exist
+                # os.makedirs(LOGS_DIR, exist_ok=True)
                 
-                # Configure file handler for persistent logging
-                log_file = os.path.join(LOGS_DIR, "app.log")
-                file_handler = logging.FileHandler(log_file)
+                # # Configure file handler for persistent logging
+                # log_file = os.path.join(LOGS_DIR, "app.log")
+                # file_handler = logging.FileHandler(log_file)
                 
-                # Set up structured logging format with timestamp, level, message, and custom dimensions
-                formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s %(custom_dimensions)s')
-                file_handler.setFormatter(formatter)
+                # # Set up structured logging format with timestamp, level, message, and custom dimensions
+                # formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s %(custom_dimensions)s')
+                # file_handler.setFormatter(formatter)
                 
-                # Add the configured handler to the logger
-                self.logger.addHandler(file_handler)
+                # # Add the configured handler to the logger
+                # self.logger.addHandler(file_handler)
         
 
     def log_debug(self, message: str, custom_dimensions: dict = None):

@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "FUNCTIONS_EXTENSION_VERSION": "~4",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=stagentflow;AccountKey=nzWKE9fPbiI89cY0mzjYViKeF02n8vm3CHJkQ7w4nyBekMQULXgK+bKj+wnVPc7HGTG6xM5/vjkp+ASt+zjujQ==;EndpointSuffix=core.windows.net"
+  },
+  "Host": {
+    "LocalHttpPort": 5000,
+    "CORS": "*"
+  }
+}
