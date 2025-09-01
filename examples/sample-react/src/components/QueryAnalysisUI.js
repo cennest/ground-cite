@@ -225,6 +225,8 @@ const QueryAnalysisUI = () => {
             return;
         }
 
+        // Clear previous results before starting new analysis
+        setResults(null);
         setIsLoading(true);
         setError(null);
 

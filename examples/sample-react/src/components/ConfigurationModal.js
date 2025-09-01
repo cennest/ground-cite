@@ -485,6 +485,38 @@ const ConfigurationModal = ({
 
                                     <div>
                                         <label style={styles.label}>JSON Schema Definition</label>
+                                        <div style={{
+                                            marginBottom: '12px',
+                                            padding: window.innerWidth < 768 ? '10px' : '12px',
+                                            background: 'rgba(124, 58, 237, 0.05)',
+                                            borderRadius: window.innerWidth < 768 ? '6px' : '8px',
+                                            border: '1px solid rgba(124, 58, 237, 0.2)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px'
+                                        }}>
+                                            <div style={{
+                                                background: 'rgba(124, 58, 237, 0.2)',
+                                                borderRadius: '50%',
+                                                padding: '4px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                minWidth: '20px',
+                                                height: '20px',
+                                                flexShrink: 0
+                                            }}>
+                                                <span style={{ fontSize: '10px' }}>🎨</span>
+                                            </div>
+                                            <p style={{
+                                                color: 'rgba(255, 255, 255, 0.8)',
+                                                fontSize: window.innerWidth < 768 ? '11px' : '12px',
+                                                margin: 0,
+                                                lineHeight: '1.3'
+                                            }}>
+                                                <strong style={{ color: '#7c3aed' }}>Tip:</strong> Use the <strong style={{ color: '#00d4ff' }}>Schema Designer</strong> tab above for a visual schema builder, or manually edit JSON here.
+                                            </p>
+                                        </div>
                                         <textarea
                                             value={config.schema || ''}
                                             onChange={(e) => handleConfigChange('schema', e.target.value)}
