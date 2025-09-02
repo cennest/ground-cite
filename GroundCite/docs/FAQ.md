@@ -30,12 +30,12 @@ gemini-groundcite analyze -q "query" --parse --schema '{"companies": ["string"]}
 ## How do I filter search results by sites?
 Include specific sites:
 ```bash
-gemini-groundcite analyze -q "query" --include-sites "github.com,arxiv.org" --gemini-key your_gemini_key
+gemini-groundcite analyze -q "query" --include-sites "https://github.com,https://arxiv.org" --gemini-key your_gemini_key
 ```
 
 Exclude specific sites:
 ```bash
-gemini-groundcite analyze -q "query" --exclude-sites "reddit.com,twitter.com" --gemini-key your_gemini_key
+gemini-groundcite analyze -q "query" --exclude-sites "https://reddit.com,https://twitter.com" --gemini-key your_gemini_key
 ```
 
 ## How do I use the REST API?
