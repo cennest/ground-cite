@@ -53,13 +53,13 @@ GroundCite uses a sophisticated graph-based architecture that orchestrates multi
 │         │              │    Node     │    │    Node     │    │
 │         │              │ (Optional)  │    │ (Optional)  │    │
 │         │              └─────────────┘    └─────────────┘    │
-│         │                     │                 │           │
-│         │                     ▼                 ▼           │
-│         │              ┌─────────────┐    ┌─────────────┐    │
-│         │              │   Parsing   │◀───│   Parsing   │    │
-│         │              │    Node     │    │   Router    │    │
-│         │              │ (Optional)  │    │ (Optional)  │    │
-│         │              └─────────────┘    └─────────────┘    │
+│         │                     │                             │
+│         │                     ▼                             │
+│         │              ┌─────────────┐                      │
+│         │              │   Parsing   │                      │
+│         │              │    Node     │                      │
+│         │              │ (Optional)  │                      │
+│         │              └─────────────┘                      │
 │         │                     │                             │
 │         ▼                     ▼                             │
 │ ┌─────────────┐               │                             │
