@@ -78,8 +78,9 @@ Query → Search → Validate → Parse → Results
 
 ### 2. Key Components
 - **AI Agent** - Main orchestrator
-- **Search Executor** - Web search operations
-- **Validation Aggregator** - Content validation (optional)
+- **Orchestration Node** - Graph orchestrator
+- **Search Node** - Web search operations
+- **Validation Node** - Content validation (optional)
 - **Parsing Node** - Structured data extraction (optional)
 
 ### 3. AI Providers
