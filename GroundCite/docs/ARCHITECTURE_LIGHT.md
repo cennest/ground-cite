@@ -94,14 +94,4 @@ Query → Search → Validate → Parse → Results
 4. **Parse**: Extract structured data (if enabled)
 5. **Output**: Analysis results + metadata
 
-## Deployment Options
 
-### Local Development
-```
-Python CLI → Core Library → AI APIs
-```
-
-### REST API
-```
-HTTP Request → FastAPI → Core Library → AI APIs
-```
