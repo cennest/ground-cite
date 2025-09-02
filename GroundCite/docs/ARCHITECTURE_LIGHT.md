@@ -8,20 +8,20 @@ GroundCite is an AI-powered query analysis library that processes user queries t
 GroundCite uses a sophisticated graph-based architecture that orchestrates multiple AI processing stages:
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Entry Point   │    │  Configuration  │    │   AI Providers  │
-│                 │    │                 │    │                 │
-│ ┌─────────────┐ │    │ ┌─────────────┐ │    │ ┌─────────────┐ │
-│ │ CLI         │ │    │ │ Settings    │ │    │ │ Google      │ │
-│ │ Interface   │ │    │ │ Validation  │ │    │ │ Gemini      │ │
-│ └─────────────┘ │    │ └─────────────┘ │    │ └─────────────┘ │
-│                 │    │                 │    │                 │
-│ ┌─────────────┐ │    │ ┌─────────────┐ │    │ ┌─────────────┐ │
-│ │ REST API    │ │────┤ │ Dependency  │ │────┤ │ OpenAI      │ │
-│ │ (FastAPI)   │ │    │ │ Injection   │ │    │ │ Client      │ │
-│ └─────────────┘ │    │ └─────────────┘ │    │ └─────────────┘ │
-│                 │    │                 │    │                 │
-│ ┌─────────────┐ │    └─────────────────┘    └─────────────────┘
+┌─────────────────┐
+│   Entry Point   │
+│                 │
+│ ┌─────────────┐ │
+│ │ CLI         │ │
+│ │ Interface   │ │
+│ └─────────────┘ │
+│                 │
+│ ┌─────────────┐ │
+│ │ REST API    │ │
+│ │ (FastAPI)   │ │
+│ └─────────────┘ │
+│                 │
+│ ┌─────────────┐ │
 │ │ Python Lib  │ │
 │ │ Direct      │ │
 │ └─────────────┘ │
@@ -51,12 +51,14 @@ GroundCite uses a sophisticated graph-based architecture that orchestrates multi
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐         │
 │  │    END      │    │ Validation  │    │Valid. Aggr. │         │
 │  │   (Final)   │◀───│    Node     │◀───│    Node     │         │
-│  └─────────────┘    └─────────────┘    └─────────────┘         │
-│         ▲                                      │               │
+│  └─────────────┘    │ (Optional)  │    │ (Optional)  │         │
+│         ▲            └─────────────┘    └─────────────┘         │
+│         │                                      │               │
 │         │                                      ▼               │
 │         │             ┌─────────────┐    ┌─────────────┐       │
 │         └─────────────│   Parsing   │◀───│   Parsing   │       │
-│                       │   Node      │    │   Router    │       │
+│                       │    Node     │    │   Router    │       │
+│                       │ (Optional)  │    │ (Optional)  │       │
 │                       └─────────────┘    └─────────────┘       │
 │                                                                │
 └─────────────────────────────────────────────────────────────────┘
