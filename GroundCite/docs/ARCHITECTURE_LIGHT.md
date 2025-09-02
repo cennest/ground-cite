@@ -3,6 +3,39 @@
 ## System Overview
 GroundCite is an AI-powered query analysis library that processes user queries through a multi-stage pipeline to provide comprehensive research results.
 
+## Flow Chart
+
+```
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│    User     │    │   Config    │    │  AI Agent  │
+│   Query     │───▶│  Settings   │───▶│ (Orchestr.) │
+└─────────────┘    └─────────────┘    └─────┬───────┘
+                                             │
+                   ┌─────────────────────────▼─────────────────────────┐
+                   │                PIPELINE                          │
+                   │                                                  │
+┌─────────────┐    │  ┌─────────────┐    ┌─────────────┐    ┌─────────┴───┐
+│   Search    │◄───┼──┤   Search    │    │ Validation  │    │   Parsing   │
+│   Results   │    │  │  Executor   │───▶│ Aggregator  │───▶│    Node     │
+└─────────────┘    │  └─────────────┘    └─────────────┘    └─────────────┘
+                   │        │                   │                   │
+                   │        ▼                   ▼                   ▼
+                   │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+                   │  │   Retry     │    │   Retry     │    │   Retry     │
+                   │  │   Logic     │    │   Logic     │    │   Logic     │
+                   │  └─────────────┘    └─────────────┘    └─────────────┘
+                   └──────────────────────────────────────────────────────┘
+                                             │
+                   ┌─────────────────────────▼─────────────────────────┐
+                   │                 RESULTS                          │
+                   │                                                  │
+                   │  ┌─────────────┐    ┌─────────────┐    ┌─────────┴───┐
+                   │  │  Analysis   │    │  Execution  │    │   Error     │
+                   │  │   Data      │    │  Metadata   │    │  Handling   │
+                   │  └─────────────┘    └─────────────┘    └─────────────┘
+                   └──────────────────────────────────────────────────────┘
+```
+
 ## Core Components
 
 ### 1. Pipeline Flow
@@ -39,30 +72,3 @@ Python CLI → Core Library → AI APIs
 ```
 HTTP Request → FastAPI → Core Library → AI APIs
 ```
-
-### Azure Functions
-```
-HTTP Trigger → Function App → Core Library → AI APIs
-```
-
-## Configuration
-- **Analysis Config**: Query settings, validation, parsing
-- **AI Config**: Models, API keys, parameters
-- **Site Config**: Include/exclude lists for search
-
-## Error Handling
-- Retry logic for each pipeline stage
-- Comprehensive error logging
-- Graceful degradation
-
-## Performance
-- Async operations
-- Token usage tracking
-- Configurable timeouts
-- Memory-efficient processing
-
-## Security
-- API key management
-- Input validation
-- Error sanitization
-- Secure configuration handling
