@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gemini-groundcite"
-version = "1.0.3"
+version = "1.0.5"
 description = "Advanced Gemini-powered search with better grounding and citation control"
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -17,11 +17,9 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
     "pydantic>=1.8.0",
     "langgraph",
@@ -42,7 +40,7 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/cennest/ground-cite"
+Homepage = "https://github.com/cennest/ground-cite/tree/main/GroundCite"
 Repository = "https://github.com/cennest/ground-cite.git"
 "Bug Tracker" = "https://github.com/cennest/ground-cite/issues"
 

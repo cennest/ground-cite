@@ -28,7 +28,7 @@ gemini-groundcite --help
 
 ```bash
 # Simple query analysis
-gemini-groundcite analyze -q "What are the benefits of renewable energy? --gemini-key your_gemeni_key"
+gemini-groundcite analyze -q "What are the benefits of renewable energy?" --gemini-key your_gemeni_key
 
 # With validation and structured parsing
 gemini-groundcite analyze \
@@ -45,7 +45,7 @@ gemini-groundcite analyze \
 
 #### 1. Simple Analysis
 ```bash
-gemini-groundcite analyze -q "How does machine learning work? --gemini-key your_gemeni_key"
+gemini-groundcite analyze -q "How does machine learning work?" --gemini-key your_gemeni_key
 ```
 
 #### 2. Analysis with Validation

@@ -99,9 +99,9 @@ def analyze_query(query: str, validate: bool, parse: bool, schema: str,
     - Structured data parsing (optional)
     
     Examples:
-        gemini_groundcite analyze -q "What are the latest developments in AI?"
-        gemini_groundcite analyze -q "Company X financials" --validate --parse
-        gemini_groundcite analyze -q "Market trends" --provider openai --verbose
+        gemini_groundcite analyze -q "What are the latest developments in AI?" --gemini-key your_gemini_key
+        gemini_groundcite analyze -q "Company X financials" --validate --parse --gemini-key your_gemini_key
+        gemini_groundcite analyze -q "Market trends" --provider openai --verbose --gemini-key your_gemini_key
     """
     try:
         # Show progress indicator for long-running operations

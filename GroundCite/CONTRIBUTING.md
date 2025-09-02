@@ -28,7 +28,7 @@ We are committed to providing a welcoming and inspiring community for all. Pleas
 
 ### Prerequisites
 
-- Python 3.10 or higher
+- Python 3.12 or higher
 - Git
 - Virtual environment tool (venv, conda, etc.)
 - Basic understanding of async/await patterns
@@ -154,8 +154,8 @@ What you expected to happen
 
 **Environment**
 - OS: [e.g. Windows 10, macOS 12, Ubuntu 20.04]
-- Python Version: [e.g. 3.10.5]
-- GroundCite Version: [e.g. 1.0.3]
+- Python Version: [e.g. 3.12]
+- GroundCite Version: [e.g. 1.0.5]
 - AI Provider: [e.g. Gemini, OpenAI]
 
 **Additional Context**

@@ -1,7 +1,7 @@
 # GroundCite - AI-Powered Query Analysis Library
 
-![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)
+![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 **GroundCite** is an advanced AI-powered query analysis library that provides comprehensive search, validation, and structured data extraction capabilities. Built with a modular, graph-based architecture, it supports multiple AI providers and offers both CLI and REST API interfaces.
@@ -9,7 +9,6 @@
 ## 🚀 Features
 
 ### Core Capabilities
-- **Multi-Provider AI Support**: Seamlessly integrate with Google Gemini and OpenAI models
 - **Graph-Based Pipeline**: State-driven execution with automatic retry logic and error handling
 - **Web Search Integration**: Intelligent web search with site filtering and content aggregation
 - **AI-Powered Validation**: Optional content validation using advanced AI models
@@ -30,7 +29,7 @@
 
 ## 📋 Requirements
 
-- **Python**: 3.10 or higher
+- **Python**: 3.12 or higher
 - **Dependencies**: See [requirements.txt](requirements.txt) for full list
 
 ### Key Dependencies
@@ -62,13 +61,13 @@ pip install gemini-groundcite
 
 ```bash
 # Simple query analysis
-gemini-groundcite analyze -q "What are the latest developments in AI?"
+gemini-groundcite analyze -q "What are the latest developments in AI?" --gemini-key your_gemini_key
 
 # With validation and parsing
-gemini-groundcite analyze -q "Company X financials" --validate --parse
+gemini-groundcite analyze -q "Company X financials" --validate --parse --gemini-key your_gemini_key
 
 # Using OpenAI provider
-gemini-groundcite analyze -q "Market trends" --provider openai --openai-key your_key
+gemini-groundcite analyze -q "Market trends" --provider openai --openai-key your_key --gemini-key your_gemini_key
 ```
 
 ### 2. Python Library Usage
@@ -254,7 +253,7 @@ gemini-groundcite version
 
 ```bash
 # Basic analysis
-gemini-groundcite analyze -q "What is quantum computing?"
+gemini-groundcite analyze -q "What is quantum computing?" --gemini-key your_gemini_key
 
 # Full pipeline with validation and parsing
 gemini-groundcite analyze \
