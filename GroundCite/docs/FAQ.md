@@ -21,6 +21,7 @@ gemini-groundcite analyze -q "What are the benefits of renewable energy?" --gemi
 ```bash
 gemini-groundcite analyze -q "query" --validate --gemini-key your_gemini_key
 ```
+## What is the validation logic? 
 
 ## How do I extract structured data (parse)?
 ```bash
@@ -37,6 +38,7 @@ Exclude specific sites:
 ```bash
 gemini-groundcite analyze -q "query" --exclude-sites "https://reddit.com,https://twitter.com" --gemini-key your_gemini_key
 ```
+## When i include a site does it get data only from that site or is it just a preferance? 
 
 ## How do I use the REST API?
 ```bash
