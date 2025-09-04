@@ -1,4 +1,4 @@
-# GroundCite - AI-Powered Query Analysis Library
+# GroundCite - Powering Gemini with Smarter, Controlled and Reliable Grounding and Citations
 
 ![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)
@@ -249,7 +249,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **GitHub Issues**: [Report bugs and request features](https://github.com/cennest/ground-cite/issues)
-- **Documentation**: [Full documentation]([https://github.com/cennest/ground-cite](https://github.com/cennest/ground-cite/tree/main/GroundCite/docs))
+- **Documentation**: [Full documentation](https://github.com/cennest/ground-cite/tree/main/GroundCite/docs)
 - **Email**: anshulee@cennest.com
 
 ## 🏆 Acknowledgments
