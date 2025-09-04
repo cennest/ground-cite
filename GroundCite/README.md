@@ -28,6 +28,15 @@
 - **Configuration Management**: Flexible settings with validation
 - **Site Filtering**: Include/exclude specific domains in search results
 
+### FAQs
+https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/FAQ.md
+
+### Detailed Architecture and usage
+-https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE.md</br>
+-https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE_LIGHT.md</br>
+-https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/USAGE.md
+
+
 ## 📋 Requirements
 
 - **Python**: 3.12 or higher
