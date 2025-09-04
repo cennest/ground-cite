@@ -206,7 +206,7 @@ GroundCite uses a sophisticated graph-based architecture that orchestrates multi
 - **Google Gemini** - Primary AI provider
 - **OpenAI** - Alternative parsing provider
 
-## Data Flow
+### Data Flow
 
 1. **Input**: User query + configuration
 2. **Search**: Find relevant web content
