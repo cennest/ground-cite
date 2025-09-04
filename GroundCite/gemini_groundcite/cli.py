@@ -30,7 +30,7 @@ console = Console()
 
 
 @click.group()
-@click.version_option(version="1.0.0")
+@click.version_option(version="1.1.0")
 def gemini_groundcite_cli():
     """
     GroundCite - AI-powered query analysis and research tool.

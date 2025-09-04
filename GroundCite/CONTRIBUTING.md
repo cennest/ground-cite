@@ -155,7 +155,7 @@ What you expected to happen
 **Environment**
 - OS: [e.g. Windows 10, macOS 12, Ubuntu 20.04]
 - Python Version: [e.g. 3.12]
-- GroundCite Version: [e.g. 1.0.5]
+- GroundCite Version: [e.g. 1.1.0]
 - AI Provider: [e.g. Gemini, OpenAI]
 
 **Additional Context**

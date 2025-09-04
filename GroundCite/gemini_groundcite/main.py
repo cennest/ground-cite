@@ -22,7 +22,7 @@ from gemini_groundcite.exceptions import GroundCiteError
 # Create FastAPI application with comprehensive metadata
 app = FastAPI(
     title="GroundCite Query Analysis API",
-    version="1.0.0",
+    version="1.1.0",
     description="AI-powered query analysis and research API using the GroundCite library",
     docs_url="/docs",
     redoc_url="/redoc"
@@ -403,7 +403,7 @@ async def root():
     return APIHealthResponse(
         status="healthy",
         timestamp=datetime.now().isoformat(),
-        version="1.0.0",
+        version="1.1.0",
         groundcite_ready=groundcite_ready
     )
 
@@ -427,7 +427,7 @@ async def detailed_health_check():
     return APIHealthResponse(
         status="healthy",
         timestamp=datetime.now().isoformat(),
-        version="1.0.0",
+        version="1.1.0",
         groundcite_ready=groundcite_ready
     )
 

@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gemini-groundcite"
-version = "1.0.5"
+version = "1.1.0"
 description = "Advanced Gemini-powered search with better grounding and citation control"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [
     {name = "Anshulee Asthana", email = "anshulee@cennest.com"}
 ]
-keywords = ["analysis", "nlp", "statistics", "ground-cite", "ai"]
+keywords = ["gemini", "citation", "grounding", "analysis", "nlp", "statistics", "ground-cite", "ai"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
