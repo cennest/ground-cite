@@ -4,7 +4,8 @@
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-**GroundCite** is an advanced AI-powered query analysis library that provides comprehensive search, validation, and structured data extraction capabilities. Built with a modular, graph-based architecture, it supports multiple AI providers and offers both CLI and REST API interfaces.
+
+**GroundCite** is a Python library for adding better grounding and valid Citation support when searching using Gemini with google grounding . It combines web search using Gemini with google grounding with context validation, and structured data parsing using multiple AI providers to deliver accurate and reliable answers to complex questions.
 
 ## 🚀 Features
 
