@@ -44,6 +44,10 @@ gemini-groundcite analyze -q "query" --validate --gemini-key your_gemini_key
 ```
 ## What is the validation logic? 
 
+The validation logic performs two key checks:
+1. **Citation Validation**: Verifies that cited sources are live and accessible.
+2. **Relevance Validation**: Uses AI to evaluate content relevance, and actually contain the referenced content with a confidence score threshold of > 0.7. Only content meeting this confidence threshold is retained, ensuring high-quality, relevant results.
+
 ## How do I extract structured data (parse)?
 ```bash
 gemini-groundcite analyze -q "query" --parse --schema '{"companies": ["string"]}' --gemini-key your_gemini_key/OpenAI Key
@@ -59,7 +63,9 @@ Exclude specific sites:
 ```bash
 gemini-groundcite analyze -q "query" --exclude-sites "https://reddit.com,https://twitter.com" --gemini-key your_gemini_key
 ```
-## When i include a site does it get data only from that site or is it just a preferance? 
+## When i include a site does it get data only from that site or is it just a preferance?
+ 
+When you include specific sites using `--include-sites`, GroundCite removes all content from other sources and **only** retrieves data from your specified sites. This provides strict filtering rather than just preference-based prioritization.
 
 ## How do I use the REST API?
 ```bash
