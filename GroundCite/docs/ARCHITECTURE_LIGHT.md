@@ -1,7 +1,7 @@
 # GroundCite Architecture - Quick Overview
 
 ## System Overview
-GroundCite is an AI-powered query analysis library that processes user queries through a multi-stage pipeline to provide comprehensive research results.
+GroundCite is a Gemini based multi-agent library that adds layers of source filtering, cite validation and output structuring through a multi-stage pipeline to provide comprehensive research results.
 
 ## 🏗️ Architecture
 
