@@ -7,7 +7,7 @@
 
 **GroundCite** is a Python library for adding better grounding and valid Citation support when searching using Gemini with google grounding . It combines web search using Gemini with google grounding with context validation, and structured data parsing using multiple AI providers to deliver accurate and reliable answers to complex questions.
 
-**Demo app for feature testing ** https://groundcite.cennest.com/
+**Demo app for feature testing** https://groundcite.cennest.com/
 
 ## 🚀 Features
 
