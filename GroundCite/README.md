@@ -1,4 +1,4 @@
-# GroundCite - AI-Powered Query Analysis Library
+# GroundCite - Powering Gemini with Smarter, Controlled and Reliable Grounding and Citations
 
 ![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)
@@ -6,6 +6,8 @@
 
 
 **GroundCite** is a Python library for adding better grounding and valid Citation support when searching using Gemini with google grounding . It combines web search using Gemini with google grounding with context validation, and structured data parsing using multiple AI providers to deliver accurate and reliable answers to complex questions.
+
+**Demo app for feature testing** https://groundcite.cennest.com/
 
 ## 🚀 Features
 
@@ -35,7 +37,6 @@ https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/FAQ.md
 -https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE.md</br>
 -https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE_LIGHT.md</br>
 -https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/USAGE.md
-
 
 ## 📋 Requirements
 
@@ -214,7 +215,6 @@ GroundCite uses a sophisticated graph-based architecture that orchestrates multi
 3. **Validate**: AI-powered content validation (if enabled)
 4. **Parse**: Extract structured data (if enabled)
 5. **Output**: Analysis results + metadata
-
 
 
 ### Production Considerations
