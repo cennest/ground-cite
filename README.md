@@ -49,6 +49,7 @@ https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/FAQ.md
 -https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE.md</br>
 -https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE_LIGHT.md</br>
 -https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/USAGE.md
+- **Detailed Documentation**: [Full documentation](https://github.com/cennest/ground-cite/tree/main/GroundCite/docs)
 
 ## 📋 Requirements
 
@@ -131,115 +132,9 @@ curl -X POST "http://localhost:8000/api/v1/analyze" \
   }'
 ```
 
-## 🏗️ Architecture
-
-GroundCite uses a sophisticated graph-based architecture that orchestrates multiple AI processing stages:
-
-```
-┌─────────────────┐
-│   Entry Point   │
-│                 │
-│ ┌─────────────┐ │
-│ │     CLI     │ │
-│ │ Interface   │ │
-│ └─────────────┘ │
-│                 │
-│ ┌─────────────┐ │
-│ │  REST API   │ │
-│ │  (FastAPI)  │ │
-│ └─────────────┘ │
-│                 │
-│ ┌─────────────┐ │
-│ │ Python Lib  │ │
-│ │   Direct    │ │
-│ └─────────────┘ │
-└─────────────────┘
-         │
-         ▼
-┌─────────────────┐
-│   AI Agent      │
-│  Orchestrator   │
-│                 │
-│ ┌─────────────┐ │
-│ │    Graph    │ │
-│ │  Executor   │ │
-│ └─────────────┘ │
-└─────────────────┘
-         │
-         ▼
-┌──────────────────────────────────────────────────────────────┐
-│                   Graph-Based Pipeline                      │
-│                                                              │
-│ ┌─────────────┐    ┌─────────────┐    ┌─────────────┐       │
-│ │Orchestration│───▶│   Search    │───▶│Search Aggr. │       │
-│ │    Node     │    │    Node     │    │    Node     │       │
-│ └─────────────┘    └─────────────┘    └─────────────┘       │
-│         │                                     │             │
-│         │                                     ▼             │
-│         │              ┌─────────────┐    ┌─────────────┐    │
-│         │              │ Validation  │◀───│Valid. Aggr. │    │
-│         │              │    Node     │    │    Node     │    │
-│         │              │ (Optional)  │    │ (Optional)  │    │
-│         │              └─────────────┘    └─────────────┘    │
-│         │                     │                             │
-│         │                     ▼                             │
-│         │              ┌─────────────┐                      │
-│         │              │   Parsing   │                      │
-│         │              │    Node     │                      │
-│         │              │ (Optional)  │                      │
-│         │              └─────────────┘                      │
-│         │                     │                             │
-│         ▼                     ▼                             │
-│ ┌─────────────┐               │                             │
-│ │     END     │◀──────────────┘                             │
-│ │  (Final)    │                                             │
-│ └─────────────┘                                             │
-└──────────────────────────────────────────────────────────────┘
-```
-
-### Core Components
-
-#### 1. **AI Agent** (`gemini_groundcite.core.agents.AIAgent`)
-- Central orchestrator for query analysis
-- Manages configuration and pipeline execution
-
-#### 2. **Graph Executor** (`gemini_groundcite.core.executors.GraphExecutor`)
-- Implements the graph-based workflow using LangGraph
-- Manages state transitions and node execution
-- Handles concurrent operations and routing
-
-#### 3. **Processing Nodes**
-- **Orchestration Node**: Controls overall execution flow
-- **Search Node**: Performs web searches
-- **Search Aggregator**: Consolidates search results
-- **Validation Node**: AI-powered content validation
-- **Validation Aggregator**: Processes validation results
-- **Parsing Node**: Extracts structured data
-
-#### 4. **AI Clients**
-- **Google Gemini** - Primary AI provider
-- **OpenAI** - Alternative parsing provider
-
-### Data Flow
-
-1. **Input**: User query + configuration
-2. **Search**: Find relevant web content
-3. **Validate**: AI-powered content validation (if enabled)
-4. **Parse**: Extract structured data (if enabled)
-5. **Output**: Analysis results + metadata
-
-
-### Production Considerations
-- Use environment variables for API keys
-- Configure proper logging levels
-- Set up monitoring and alerting
-- Implement rate limiting
-- Use database for configuration storage
-- Set up load balancing for high traffic
-
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+We welcome contributions! Please reach out to anshulee@cennest.com or even better send us a PR..
 
 ### Development Setup
 ```bash
@@ -263,7 +158,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **GitHub Issues**: [Report bugs and request features](https://github.com/cennest/ground-cite/issues)
-- **Documentation**: [Full documentation](https://github.com/cennest/ground-cite/tree/main/GroundCite/docs)
 - **Email**: anshulee@cennest.com
 
 ## 🏆 Acknowledgments
