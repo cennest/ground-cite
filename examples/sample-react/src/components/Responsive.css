@@ -64,6 +64,22 @@
     padding: 8px 16px !important;
     font-size: 12px !important;
   }
+
+  /* Quick Links Mobile Styles */
+  .quick-links {
+    order: 3;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 8px !important;
+  }
+  
+  .quick-links a {
+    justify-content: center !important;
+    width: 100% !important;
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+  }
   
   .config-button {
     margin-bottom: 16px !important;
