@@ -17,8 +17,9 @@ then GroundCite is your solution.
 
 **Read more about why we made GroundCite**  https://www.cennest.com/fix-geminis-broken-citations-with-groundcite-complete-guide/
 
-**Demo app for feature testing** https://groundcite.cennest.com/
+**Playground app for feature testing** https://groundcite.cennest.com/  
 
+**GroundCite in Action** https://youtu.be/b1sCCRSgi38
 
 ## 🚀 Features
 
