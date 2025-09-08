@@ -34,9 +34,9 @@
 https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/FAQ.md
 
 ### Detailed Architecture and usage
--https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE.md</br>
--https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE_LIGHT.md</br>
--https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/USAGE.md
+- [Architecture Documentation](./docs/ARCHITECTURE.md)
+- [Architecture - Quick Overview](./docs/ARCHITECTURE_LIGHT.md)
+- [Usage Guide](./docs/USAGE.md)
 
 ## 📋 Requirements
 
