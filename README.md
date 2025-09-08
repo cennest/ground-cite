@@ -4,15 +4,15 @@
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-
+<h1>Fix Gemini’s Broken Citations with GroundCite</h1>
 **GroundCite** is a Python library for adding better grounding and valid Citation support when searching using Gemini with google grounding . It combines web search using Gemini with google grounding with context validation, and structured data parsing using multiple AI providers to deliver accurate and reliable answers to complex questions.
 
 If you’ve ever faced:
 
-- **Broken links** in Gemini’s outputs,  
-- **Irrelevant citations** pointing to 404 pages or unrelated content, or  
+- **Broken citations** in Gemini’s outputs,  
+- **Irrelevant/Invalid citations** pointing to 404 pages or unrelated content, or  
 - **No Citations** in Structured JSON responses,  
-- **Gemini **disregarding your instructions wrt source of data** ( no inclusions or exclusions),  
+- **Grounding Issues: Gemini disregarding your instructions wrt source of data** ( no inclusions or exclusions),  
 then GroundCite is your solution.
 
 **Read more about why we made GroundCite**  https://www.cennest.com/fix-geminis-broken-citations-with-groundcite-complete-guide/
@@ -24,10 +24,10 @@ then GroundCite is your solution.
 ## 🚀 Features
 
 ### Core Capabilities
-- **Graph-Based Pipeline**: State-driven execution with automatic retry logic and error handling
-- **Web Search Integration**: Intelligent web search with site filtering and content aggregation
-- **AI-Powered Validation**: Optional content validation using advanced AI models
-- **Structured Data Parsing**: Extract structured data using custom JSON schemas
+- **Intelligent Search Integration**: Intelligent grounding search with site filtering and content aggregation
+- **AI-Powered Validation**: Optional citation validation using advanced AI models
+- **Structured Data Parsing with Citation**: Extract structured data with Citations using custom JSON schemas
+- **MultiAgent Graph-Based Pipeline**: Consistent output with automatic retry logic and error handling
 - **Comprehensive Logging**: Detailed execution metrics and token usage tracking
 
 ### Interface Options
