@@ -43,7 +43,8 @@ then GroundCite is your solution.
 - **Site Filtering**: Include/exclude specific domains in search results
 
 ### FAQs
-https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/FAQ.md
+https://www.cennest.com/groundcite-frequently-asked-questions-faq/
+
 
 ### Detailed Architecture and usage
 -https://github.com/cennest/ground-cite/blob/main/GroundCite/docs/ARCHITECTURE.md</br>
